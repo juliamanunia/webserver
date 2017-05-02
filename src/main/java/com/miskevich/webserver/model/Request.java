@@ -7,7 +7,7 @@ public class Request {
 
     private String url;
     private HttpMethod method;
-    private Map<String, String> headers = new HashMap<String, String>();
+    private Map<String, String> headers = new HashMap<>();
 
     public String getUrl() {
         return url;
@@ -35,6 +35,26 @@ public class Request {
 
     public void addHeader(String key, String value){
         headers.put(key, value);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Request request = (Request) o;
+
+        if (url != null ? !url.equals(request.url) : request.url != null) return false;
+        if (method != request.method) return false;
+        return headers != null ? headers.equals(request.headers) : request.headers == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = url != null ? url.hashCode() : 0;
+        result = 31 * result + (method != null ? method.hashCode() : 0);
+        result = 31 * result + (headers != null ? headers.hashCode() : 0);
+        return result;
     }
 
     @Override
