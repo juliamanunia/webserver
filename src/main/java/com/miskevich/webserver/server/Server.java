@@ -15,7 +15,7 @@ public class Server {
         this.port = port;
     }
 
-    public void setResoursePath(String path){
+    public void setResourcePath(String path){
         resourceReader = new ResourceReader(path);
     }
 
@@ -23,16 +23,8 @@ public class Server {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
             while (true){
-                //try {
-                    Socket socket = serverSocket.accept();
-                    new Thread(new WorkerRunnable(socket, resourceReader)).start();
-//                    BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//                    BufferedOutputStream writer = new BufferedOutputStream(socket.getOutputStream());
-//                    RequestHandler requestHandler = new RequestHandler(reader, writer, resourceReader);
-//                    requestHandler.handle();
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
+                Socket socket = serverSocket.accept();
+                new Thread(new WorkerRunnable(socket, resourceReader)).start();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

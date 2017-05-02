@@ -12,7 +12,6 @@ public class ThreadPooledServer implements Runnable {
 
     private int port;
     private ResourceReader resourceReader;
-    private Thread runningThread;
     private ExecutorService threadPool = Executors.newFixedThreadPool(10);
 
     public ThreadPooledServer(int port) {
@@ -25,10 +24,6 @@ public class ThreadPooledServer implements Runnable {
 
     @Override
     public void run() {
-        synchronized(this){
-            this.runningThread = Thread.currentThread();
-        }
-
         try {
             ServerSocket serverSocket = new ServerSocket(port);
             while (true){
@@ -38,11 +33,6 @@ public class ThreadPooledServer implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-
-
     }
 }
 

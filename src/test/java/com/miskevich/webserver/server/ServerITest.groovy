@@ -1,18 +1,18 @@
 package com.miskevich.webserver.server
 
-import org.testng.annotations.Test
+//import org.testng.annotations.Test
 
 
 class ServerITest extends GroovyTestCase{
 
-    @Test
+    //@Test
     void testServerOnRealProject(){
         Server server = new Server(3000)
-        server.setResoursePath("src/test/resources/webapp")
+        server.setResourcePath("src/test/resources/webapp")
         server.start()
     }
 
-    @Test
+    //@Test
     void testThreadPoolServerOnRealProject(){
         ThreadPooledServer threadPooledServer = new ThreadPooledServer(3000)
         threadPooledServer.setResourcePath("src/test/resources/webapp")
