@@ -23,18 +23,20 @@ public class Server {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
             while (true){
-                try {
+                //try {
                     Socket socket = serverSocket.accept();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    BufferedOutputStream writer = new BufferedOutputStream(socket.getOutputStream());
-                    RequestHandler requestHandler = new RequestHandler(reader, writer, resourceReader);
-                    requestHandler.handle();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                    new Thread(new WorkerRunnable(socket, resourceReader)).start();
+//                    BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//                    BufferedOutputStream writer = new BufferedOutputStream(socket.getOutputStream());
+//                    RequestHandler requestHandler = new RequestHandler(reader, writer, resourceReader);
+//                    requestHandler.handle();
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 }

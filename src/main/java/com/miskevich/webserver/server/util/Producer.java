@@ -19,13 +19,15 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
-
+//int i = 0;
         int length;
         byte[] buffer = new byte[1024 * 8];
         try {
             while ((length = resource.read(buffer)) != -1){
                 byteToLength.put(buffer, length);
                 queue.add(byteToLength);
+//                i++;
+//                System.out.println("read buffer: " + i);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

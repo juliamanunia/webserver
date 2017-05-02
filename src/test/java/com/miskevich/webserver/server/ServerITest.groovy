@@ -12,4 +12,17 @@ class ServerITest extends GroovyTestCase{
         server.start()
     }
 
+    @Test
+    void testThreadPoolServerOnRealProject(){
+        ThreadPooledServer threadPooledServer = new ThreadPooledServer(3000)
+        threadPooledServer.setResourcePath("src/test/resources/webapp")
+        new Thread(threadPooledServer).start()
+
+        try {
+            Thread.sleep(1000000)
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e)
+        }
+    }
+
 }
