@@ -33,7 +33,7 @@ public class ThreadPooledServer implements Runnable {
             ServerSocket serverSocket = new ServerSocket(port);
             while (true){
                 Socket socket = serverSocket.accept();
-                threadPool.execute(new WorkerRunnable(socket, resourceReader));
+                poolExecutor.execute(new WorkerRunnable(socket, resourceReader));
             }
         } catch (IOException e) {
             e.printStackTrace();
