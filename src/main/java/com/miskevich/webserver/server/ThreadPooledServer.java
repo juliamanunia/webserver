@@ -7,12 +7,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class ThreadPooledServer implements Runnable {
 
     private int port;
     private ResourceReader resourceReader;
-    private ExecutorService threadPool = Executors.newFixedThreadPool(10);
+    private ExecutorService threadPool = Executors.newCachedThreadPool();
 
     public ThreadPooledServer(int port) {
         this.port = port;
@@ -25,6 +26,10 @@ public class ThreadPooledServer implements Runnable {
     @Override
     public void run() {
         try {
+            ThreadPoolExecutor poolExecutor = (ThreadPoolExecutor) threadPool;
+            poolExecutor.setCorePoolSize(5);
+            poolExecutor.setMaximumPoolSize(20);
+
             ServerSocket serverSocket = new ServerSocket(port);
             while (true){
                 Socket socket = serverSocket.accept();
