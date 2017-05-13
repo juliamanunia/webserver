@@ -7,7 +7,7 @@ import com.miskevich.webserver.server.util.ResponseHeaderGenerator;
 
 import java.io.*;
 
-public class RequestHandler {
+public class RequestHandler implements Runnable{
 
     private BufferedReader reader;
     private BufferedOutputStream writer;
@@ -37,5 +37,10 @@ public class RequestHandler {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void run() {
+        handle();
     }
 }

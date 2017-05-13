@@ -24,7 +24,10 @@ public class Server {
             ServerSocket serverSocket = new ServerSocket(port);
             while (true){
                 Socket socket = serverSocket.accept();
-                new Thread(new WorkerRunnable(socket, resourceReader)).start();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                BufferedOutputStream writer = new BufferedOutputStream(socket.getOutputStream());
+                RequestHandler requestHandler = new RequestHandler(reader, writer, resourceReader);
+                new Thread(requestHandler).start();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -2,7 +2,10 @@ package com.miskevich.webserver.server;
 
 import com.miskevich.webserver.file.ResourceReader;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -33,7 +36,10 @@ public class ThreadPooledServer implements Runnable {
             ServerSocket serverSocket = new ServerSocket(port);
             while (true){
                 Socket socket = serverSocket.accept();
-                poolExecutor.execute(new WorkerRunnable(socket, resourceReader));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                BufferedOutputStream writer = new BufferedOutputStream(socket.getOutputStream());
+                RequestHandler requestHandler = new RequestHandler(reader, writer, resourceReader);
+                poolExecutor.execute(requestHandler);
             }
         } catch (IOException e) {
             e.printStackTrace();

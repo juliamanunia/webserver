@@ -12,9 +12,7 @@ class ServerITest extends GroovyTestCase{
     void testThreadPoolServerOnRealProject(){
         ThreadPooledServer threadPooledServer = new ThreadPooledServer(3000)
         threadPooledServer.setResourcePath("src/test/resources/webapp")
-        def thread = new Thread(threadPooledServer)
-        thread.start()
-        thread.join()
+        threadPooledServer.run()
     }
 
 }

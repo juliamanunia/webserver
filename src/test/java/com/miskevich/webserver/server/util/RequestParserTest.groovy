@@ -8,8 +8,6 @@ import static org.testng.Assert.*
 
 class RequestParserTest extends GroovyTestCase {
 
-    private BufferedReader reader
-
     @DataProvider (name = "provideRequest")
     Object[][] provideRequest() {
         def headersUrlMethod = new StringBuilder()
@@ -25,16 +23,16 @@ class RequestParserTest extends GroovyTestCase {
                 .append("Cookie: JSESSIONID=dskfw774f9ovjz1isafe83cr; io=oV8FgNcgYFEpWDc5AAB4\n")
                 .append("\n")
 
-        def headersMap = new HashMap()
-        headersMap.put("Host", " localhost")
-        headersMap.put("Connection", " keep-alive")
-        headersMap.put("Cache-Control", " max-age=0")
-        headersMap.put("Upgrade-Insecure-Requests", " 1")
-        headersMap.put("User-Agent", " Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36")
-        headersMap.put("Accept", " text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
-        headersMap.put("Accept-Encoding", " gzip, deflate, sdch, br")
-        headersMap.put("Accept-Language", " ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4")
-        headersMap.put("Cookie", " JSESSIONID=dskfw774f9ovjz1isafe83cr; io=oV8FgNcgYFEpWDc5AAB4")
+        def headersMap = [Host : ' localhost',
+                          Connection : ' keep-alive',
+                          'Cache-Control' : ' max-age=0',
+                          'Upgrade-Insecure-Requests' : ' 1',
+                          'User-Agent' : ' Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
+                          Accept : ' text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                          'Accept-Encoding' : ' gzip, deflate, sdch, br',
+                          'Accept-Language' : ' ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
+                          Cookie : ' JSESSIONID=dskfw774f9ovjz1isafe83cr; io=oV8FgNcgYFEpWDc5AAB4'
+        ]
 
         def expectedRequest = new Request(url: '/index.html', method: 'GET', headers: headersMap)
 
@@ -45,7 +43,7 @@ class RequestParserTest extends GroovyTestCase {
 
     @Test(dataProvider = "provideRequest")
     void testToRequest(requestSB, expected) {
-        reader = new BufferedReader(new StringReader(requestSB.toString()))
+        BufferedReader reader = new BufferedReader(new StringReader(requestSB.toString()))
         def request = RequestParser.toRequest(reader)
         assertEquals(request, expected)
     }
