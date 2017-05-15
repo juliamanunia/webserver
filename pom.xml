@@ -48,16 +48,17 @@
             <version>6.9.9</version>
             <scope>test</scope>
         </dependency>
-        <!--For servlet testing purposes only, remove then-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>2.3.20</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
