@@ -12,7 +12,6 @@ public class Request implements HttpServletRequest{
 
     private String url;
     private HttpMethod method;
-    private Map<String, String> headers = new HashMap<>();
 
     public String getUrl() {
         return url;
@@ -22,65 +21,21 @@ public class Request implements HttpServletRequest{
         this.url = url;
     }
 
-    public HttpMethod getRequestMethod() {
-        return method;
+    @Override
+    public StringBuffer getRequestURL() {
+        return new StringBuffer(getUrl());
+    }
+
+    @Override
+    public String getMethod() {
+        return method.toString();
     }
 
     public void setMethod(HttpMethod method) {
         this.method = method;
     }
 
-    public Map<String, String> getHeaders() {
-        return headers;
-    }
 
-    public void setHeaders(Map<String, String> headers) {
-        this.headers = headers;
-    }
-
-    public void addHeader(String key, String value){
-        headers.put(key, value);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Request request = (Request) o;
-
-        if (url != null ? !url.equals(request.url) : request.url != null) return false;
-        if (method != request.method) return false;
-        return headers != null ? headers.equals(request.headers) : request.headers == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = url != null ? url.hashCode() : 0;
-        result = 31 * result + (method != null ? method.hashCode() : 0);
-        result = 31 * result + (headers != null ? headers.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Request{" +
-                "url='" + url + '\'' +
-                ", method=" + method +
-                ", headers=" + headers +
-                '}';
-    }
-
-    @Override
-    public StringBuffer getRequestURL() {
-        StringBuffer stringBuffer = new StringBuffer(" http://localhost:3000" + getUrl());
-        return stringBuffer;
-    }
-
-    @Override
-    public String getMethod() {
-        return getRequestMethod().toString();
-    }
 
     @Override
     public String getAuthType() {

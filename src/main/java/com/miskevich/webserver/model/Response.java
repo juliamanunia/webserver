@@ -9,12 +9,11 @@ import java.util.Locale;
 
 public class Response implements HttpServletResponse {
 
-    BufferedOutputStream writer;
+    private ByteArrayOutputStream writer;
     private PrintWriter printWriter;
-    private int _status;
-    private String _reason = null;
+    private int statusCode;
 
-    public Response(BufferedOutputStream writer) {
+    public Response(ByteArrayOutputStream writer) {
         this.writer = writer;
     }
 
@@ -22,8 +21,7 @@ public class Response implements HttpServletResponse {
     @Override
     public PrintWriter getWriter() throws IOException {
         if (printWriter == null) {
-            OutputStreamWriter w = new OutputStreamWriter(
-                    writer);
+            OutputStreamWriter w = new OutputStreamWriter(writer);
             printWriter = new PrintWriter(w);
         }
 
@@ -31,15 +29,14 @@ public class Response implements HttpServletResponse {
     }
 
     @Override
-    public void setStatus(int sc) {
-        this._status = sc;
-
+    public int getStatus() {
+        return statusCode;
     }
 
     @Override
-    public String toString()
-    {
-        return String.format("%s %d %s%n", "HTTP/1.1", _status, _reason == null ? "" : _reason);
+    public void setStatus(int statusCode) {
+        this.statusCode = statusCode;
+
     }
 
     @Override
@@ -130,10 +127,6 @@ public class Response implements HttpServletResponse {
 
     }
 
-    @Override
-    public int getStatus() {
-        return 0;
-    }
 
     @Override
     public String getHeader(String name) {

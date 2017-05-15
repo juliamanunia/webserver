@@ -1,7 +1,6 @@
-package com.miskevich.webserver.servlet;
+package com.miskevich.webserver.server.servlet;
 
-import com.miskevich.webserver.model.Request;
-import com.miskevich.webserver.templater.PageGenerator;
+import com.miskevich.webserver.server.templater.*;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +22,6 @@ public class IndexServlet extends HttpServlet {
         //response generate
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
-        System.out.println(response);
 
         BufferedWriter bufferedWriter = new BufferedWriter(response.getWriter());
         bufferedWriter.write(PageGenerator.instance().getPage("index.html", pageVariables));

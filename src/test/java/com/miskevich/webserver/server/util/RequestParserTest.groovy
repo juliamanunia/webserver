@@ -1,6 +1,6 @@
 package com.miskevich.webserver.server.util
 
-import com.miskevich.webserver.model.Request
+import com.miskevich.webserver.model.StaticResourceRequest
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
 import static org.testng.Assert.*
@@ -34,7 +34,7 @@ class RequestParserTest extends GroovyTestCase {
                           Cookie : ' JSESSIONID=dskfw774f9ovjz1isafe83cr; io=oV8FgNcgYFEpWDc5AAB4'
         ]
 
-        def expectedRequest = new Request(url: '/index.html', method: 'GET', headers: headersMap)
+        def expectedRequest = new StaticResourceRequest(url: '/index.html', method: 'GET', headers: headersMap)
 
         def array = new Object[1][]
         array[0] = [headersUrlMethod, expectedRequest]
