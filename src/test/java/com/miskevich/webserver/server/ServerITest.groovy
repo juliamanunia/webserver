@@ -10,7 +10,7 @@ class ServerITest extends GroovyTestCase{
         IndexServlet indexServlet = new IndexServlet()
 
         ServletContext context = new ServletContext()
-        context.addServlet("/index/all", indexServlet)
+        context.addServlet("/index/all", indexServlet) 
 
         ThreadPooledServer threadPooledServer = new ThreadPooledServer(3000)
         threadPooledServer.setResourcePath("src/test/resources/webapp")
