@@ -10,21 +10,8 @@ import java.util.*;
 
 public class Request implements HttpServletRequest{
 
-    private String url;
     private HttpMethod method;
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @Override
-    public StringBuffer getRequestURL() {
-        return new StringBuffer(getUrl());
-    }
 
     @Override
     public String getMethod() {
@@ -36,6 +23,10 @@ public class Request implements HttpServletRequest{
     }
 
 
+    @Override
+    public StringBuffer getRequestURL() {
+        return null;
+    }
 
     @Override
     public String getAuthType() {

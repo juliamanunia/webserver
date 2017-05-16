@@ -12,6 +12,8 @@ public class Response implements HttpServletResponse {
     private ByteArrayOutputStream writer;
     private PrintWriter printWriter;
     private int statusCode;
+    private String contentType;
+    private long contentLength;
 
     public Response(ByteArrayOutputStream writer) {
         this.writer = writer;
@@ -38,6 +40,26 @@ public class Response implements HttpServletResponse {
         this.statusCode = statusCode;
 
     }
+
+    @Override
+    public String getContentType() {
+        return contentType;
+    }
+
+    @Override
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public long getContentLengthLong() {
+        return contentLength;
+    }
+
+    @Override
+    public void setContentLengthLong(long contentLength) {
+        this.contentLength = contentLength;
+    }
+
 
     @Override
     public ServletOutputStream getOutputStream() throws IOException {
@@ -149,13 +171,6 @@ public class Response implements HttpServletResponse {
     }
 
     @Override
-    public String getContentType() {
-        return null;
-    }
-
-
-
-    @Override
     public void setCharacterEncoding(String charset) {
 
     }
@@ -165,15 +180,7 @@ public class Response implements HttpServletResponse {
 
     }
 
-    @Override
-    public void setContentLengthLong(long len) {
 
-    }
-
-    @Override
-    public void setContentType(String type) {
-
-    }
 
     @Override
     public void setBufferSize(int size) {

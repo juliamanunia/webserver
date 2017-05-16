@@ -19,7 +19,7 @@ public class IndexServlet extends HttpServlet {
         Map<String, Object> pageVariables = new HashMap<>();
         pageVariables.put("message", "");
 
-        //response generate
+        //response generateHeadersForStaticResources
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
 

@@ -1,6 +1,9 @@
 package com.miskevich.webserver.file;
 
+import com.miskevich.webserver.model.Resource;
+
 import java.io.*;
+import java.nio.file.Files;
 
 public class ResourceReader {
 
@@ -10,11 +13,17 @@ public class ResourceReader {
         this.path = path;
     }
 
-    public BufferedInputStream getResource(String url) {
+    public Resource getResource(String url) {
         File pathToResource = new File(path + File.separator + url);
+        Resource resource = new Resource();
+        resource.setResourceLocalPath(pathToResource);
+
         try {
-            return new BufferedInputStream(new FileInputStream(pathToResource));
-        } catch (FileNotFoundException e) {
+            resource.setContentType(Files.probeContentType(pathToResource.toPath()));
+            resource.setContentLength(Files.size(pathToResource.toPath()));
+            resource.setContent(new BufferedInputStream(new FileInputStream(pathToResource)));
+            return resource;
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
