@@ -28,11 +28,8 @@ public class ResponseHeaderGenerator {
                     .append("\n");
         }
 
-        responseHeaders
-                .append("Date: ")
-                .append(DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT"))))
-                .append("\n")
-                .append("\n");
+        injectStandardHeaders(responseHeaders);
+        responseHeaders.append("\n");
 
         return responseHeaders.toString();
     }
@@ -41,6 +38,8 @@ public class ResponseHeaderGenerator {
         StringBuilder responseHeaders = new StringBuilder(error ? NOT_FOUND : OK);
         responseHeaders.append("\n");
         injectHeaders(responseHeaders, resource);
+        injectStandardHeaders(responseHeaders);
+        responseHeaders.append("\n");
 
         return responseHeaders.toString();
     }
@@ -52,10 +51,19 @@ public class ResponseHeaderGenerator {
                 .append("\n")
                 .append("Content-Length: ")
                 .append(resource.getContentLength())
-                .append("\n")
+                .append("\n");
+    }
+
+    private static void injectStandardHeaders(StringBuilder responseHeaders){
+        responseHeaders
                 .append("Date: ")
                 .append(DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT"))))
                 .append("\n")
+                .append("Server: ")
+                .append("Miskevich/0.0.1")
+                .append("\n")
+                .append("Cache-Control: ")
+                .append("max-age=3600")
                 .append("\n");
     }
 }
