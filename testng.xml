@@ -1,0 +1,25 @@
+<suite name="WebServerSuite">
+
+    <test name="RequestParser">
+        <classes>
+            <class name="com.miskevich.webserver.server.util.RequestParserTest">
+                <methods>
+                    <include name="testToRequest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="ResponseHeaderGenerator">
+        <classes>
+            <class name="com.miskevich.webserver.server.util.ResponseHeaderGeneratorTest">
+                <methods>
+                    <include name="testGenerateHeadersForServletNotNull" />
+                    <include name="testGenerateHeadersForServletNull" />
+                    <include name="testGenerateHeadersForStaticResources" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
