@@ -4,15 +4,15 @@ class PerformanceTest extends GroovyTestCase{
 
     void testPerformanceForResourceLoading(){
 
-        final int ATTEMPTS = 5
+        final int ATTEMPTS = 20
         def total = 0
 
-        for (int i = 0; i < ATTEMPTS; i++) {
+        for (int i = 1; i < ATTEMPTS; i++) {
             def start = System.currentTimeMillis()
 
             def socket = new Socket("localhost", 3000)
             def writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))
-            writer.write("GET /pic/<file_name_with_150MB_size> HTTP/1.1\n\n")
+            writer.write("GET /pic/" + i + ".jpg HTTP/1.1\n\n")
             writer.flush()
 
             def inputStream = socket.getInputStream()

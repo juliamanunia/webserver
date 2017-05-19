@@ -68,7 +68,7 @@ public class RequestHandler implements Runnable{
 
             if(content.available() != 0){
                 writer.write(ResponseHeaderGenerator.generateHeadersForStaticResources(resource, false).getBytes());
-                byte[] buffer = new byte[1024 * 256];
+                byte[] buffer = new byte[1024];
                 int length;
                 while ((length = content.read(buffer)) != -1){
                     writer.write(buffer, 0, length);
