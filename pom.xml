@@ -11,7 +11,8 @@
     <properties>
         <gmaven.version>1.5</gmaven.version>
         <groovy.version>2.4.10</groovy.version>
-        <pom.basedir>C:/JULIA/Projects/webserver</pom.basedir>
+        <surefire.version>2.20</surefire.version>
+        <pom.basedir>webserver</pom.basedir>
         <testng.version>6.9.9</testng.version>
         <freemarker.version>2.3.20</freemarker.version>
         <servlet.version>3.1.0</servlet.version>
@@ -46,7 +47,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
+                <version>${surefire.version}</version>
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>

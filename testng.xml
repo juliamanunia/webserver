@@ -2,7 +2,7 @@
 
     <test name="RequestParser">
         <classes>
-            <class name="com.miskevich.webserver.server.util.RequestParserTest">
+            <class name="com.miskevich.webserver.server.util.ServletRequestParserTest">
                 <methods>
                     <include name="testToRequest" />
                 </methods>
@@ -12,7 +12,7 @@
 
     <test name="ResponseHeaderGenerator">
         <classes>
-            <class name="com.miskevich.webserver.server.util.ResponseHeaderGeneratorTest">
+            <class name="com.miskevich.webserver.server.util.ServletResponseHeaderGeneratorTest">
                 <methods>
                     <include name="testGenerateHeadersForServletNotNull" />
                     <include name="testGenerateHeadersForServletNull" />

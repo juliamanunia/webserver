@@ -1,4 +1,4 @@
-package com.miskevich.webserver.model;
+package com.miskevich.webserver.model.resources;
 
 import java.io.BufferedInputStream;
 import java.io.File;

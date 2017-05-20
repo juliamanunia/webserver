@@ -1,7 +1,7 @@
 package com.miskevich.webserver.server.util
 
-import com.miskevich.webserver.model.Resource
-import com.miskevich.webserver.model.Response
+import com.miskevich.webserver.model.resources.Resource
+import com.miskevich.webserver.model.ServletResponse
 import org.testng.annotations.DataProvider
 
 
@@ -10,7 +10,7 @@ class ResponseDataProvider {
     @DataProvider (name = "provideResponseNotNull")
     static Object[][] provideResponseNotNull() {
 
-        def response = new Response(new ByteArrayOutputStream())
+        def response = new ServletResponse()
         response.setContentType('image/jpeg')
         response.setContentLengthLong(55)
 
@@ -39,7 +39,7 @@ class ResponseDataProvider {
     @DataProvider (name = "provideResponseNull")
     static Object[][] provideResponseNull() {
 
-        def response = new Response(new ByteArrayOutputStream())
+        def response = new ServletResponse()
 
         def expectedResponse = new StringBuilder()
         expectedResponse

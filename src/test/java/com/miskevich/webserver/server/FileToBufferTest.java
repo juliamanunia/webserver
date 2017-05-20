@@ -11,7 +11,7 @@ public class FileToBufferTest {
         for (int i = 1; i < ATTEMPTS; i++) {
             long start = System.currentTimeMillis();
             InputStream inputStream = new FileInputStream(
-                    new File("C:/JULIA/Projects/webserver/src/test/resources/webapp/pic/" + i + ".jpg"));
+                    new File("webserver/src/test/resources/webapp/pic/" + i + ".jpg"));
 
             byte[] buffer = new byte[1024 * 32];
             int length;
