@@ -2,7 +2,7 @@ package com.miskevich.webserver.server.util
 
 import org.testng.annotations.Test
 
-class ResponseHeaderGeneratorTest extends GroovyTestCase {
+class ServletResponseHeaderGeneratorTest extends GroovyTestCase {
 
     @Test(dataProvider = "provideResponseNotNull", dataProviderClass = ResponseDataProvider.class)
     void testGenerateHeadersForServletNotNull(response, expected) {

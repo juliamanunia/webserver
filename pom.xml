@@ -10,12 +10,13 @@
 
     <properties>
         <gmaven.version>1.5</gmaven.version>
-        <groovy.version>2.1.8</groovy.version>
+        <groovy.version>2.4.10</groovy.version>
         <pom.basedir>C:/JULIA/Projects/webserver</pom.basedir>
         <testng.version>6.9.9</testng.version>
         <freemarker.version>2.3.20</freemarker.version>
         <servlet.version>3.1.0</servlet.version>
         <java.version>1.8</java.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 
     <build>
@@ -87,13 +88,18 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>${servlet.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>${groovy.version}</version>
-            <scope>test</scope>
+            <scope>runtime</scope>
         </dependency>
+        <!--TEST-->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

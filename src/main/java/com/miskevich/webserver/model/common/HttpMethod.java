@@ -1,9 +1,14 @@
-package com.miskevich.webserver.model;
+package com.miskevich.webserver.model.common;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public enum HttpMethod {
+
     GET("GET");
 
     private String method;
+    private static final Logger LOG = LoggerFactory.getLogger(HttpMethod.class);
 
     HttpMethod(String method) {
         this.method = method;
@@ -15,6 +20,8 @@ public enum HttpMethod {
                 return httpMethod;
             }
         }
-        throw new IllegalArgumentException("Method " + method + " is not supported");
+        String message = "Method " + method + " is not supported";
+        LOG.warn(message);
+        throw new IllegalArgumentException(message);
     }
 }

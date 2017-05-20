@@ -1,12 +1,12 @@
 package com.miskevich.webserver.server.util
 
-import com.miskevich.webserver.model.StaticResourceRequest
+import com.miskevich.webserver.model.resources.StaticResourceRequest
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
 import static org.testng.Assert.*
 
 
-class RequestParserTest extends GroovyTestCase {
+class ServletRequestParserTest extends GroovyTestCase {
 
     @DataProvider (name = "provideRequest")
     Object[][] provideRequest() {

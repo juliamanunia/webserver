@@ -1,6 +1,8 @@
 package com.miskevich.webserver.file;
 
-import com.miskevich.webserver.model.Resource;
+import com.miskevich.webserver.model.resources.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -8,6 +10,7 @@ import java.nio.file.Files;
 public class ResourceReader {
 
     private String path;
+    private static final Logger LOG = LoggerFactory.getLogger(ResourceReader.class);
 
     public ResourceReader(String path) {
         this.path = path;
@@ -24,6 +27,7 @@ public class ResourceReader {
             resource.setContent(new BufferedInputStream(new FileInputStream(pathToResource)));
             return resource;
         } catch (IOException e) {
+            LOG.warn(e.getMessage());
             throw new RuntimeException(e);
         }
     }

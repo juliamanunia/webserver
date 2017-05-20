@@ -1,6 +1,6 @@
-package com.miskevich.webserver.server.servlet;
+package com.miskevich.webserver.data.servlet;
 
-import com.miskevich.webserver.server.templater.*;
+import com.miskevich.webserver.data.templater.PageGenerator;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

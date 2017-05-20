@@ -1,4 +1,4 @@
-package com.miskevich.webserver.model;
+package com.miskevich.webserver.model.adapter;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -6,27 +6,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
-import java.util.*;
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.Locale;
+import java.util.Map;
 
-public class Request implements HttpServletRequest{
-
-    private HttpMethod method;
-
-
-    @Override
-    public String getMethod() {
-        return method.toString();
-    }
-
-    public void setMethod(HttpMethod method) {
-        this.method = method;
-    }
-
-
-    @Override
-    public StringBuffer getRequestURL() {
-        return null;
-    }
+public class HttpServletRequestAdapter implements HttpServletRequest {
 
     @Override
     public String getAuthType() {
@@ -61,6 +46,11 @@ public class Request implements HttpServletRequest{
     @Override
     public int getIntHeader(String name) {
         return 0;
+    }
+
+    @Override
+    public String getMethod() {
+        return null;
     }
 
     @Override
@@ -105,6 +95,11 @@ public class Request implements HttpServletRequest{
 
     @Override
     public String getRequestURI() {
+        return null;
+    }
+
+    @Override
+    public StringBuffer getRequestURL() {
         return null;
     }
 

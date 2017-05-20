@@ -1,71 +1,14 @@
-package com.miskevich.webserver.model;
+package com.miskevich.webserver.model.adapter;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Locale;
 
-public class Response implements HttpServletResponse {
-
-    private ByteArrayOutputStream writer;
-    private PrintWriter printWriter;
-    private int statusCode;
-    private String contentType;
-    private long contentLength;
-
-    public Response(ByteArrayOutputStream writer) {
-        this.writer = writer;
-    }
-
-
-    @Override
-    public PrintWriter getWriter() throws IOException {
-        if (printWriter == null) {
-            OutputStreamWriter w = new OutputStreamWriter(writer);
-            printWriter = new PrintWriter(w);
-        }
-
-        return printWriter;
-    }
-
-    @Override
-    public int getStatus() {
-        return statusCode;
-    }
-
-    @Override
-    public void setStatus(int statusCode) {
-        this.statusCode = statusCode;
-
-    }
-
-    @Override
-    public String getContentType() {
-        return contentType;
-    }
-
-    @Override
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
-
-    public long getContentLengthLong() {
-        return contentLength;
-    }
-
-    @Override
-    public void setContentLengthLong(long contentLength) {
-        this.contentLength = contentLength;
-    }
-
-
-    @Override
-    public ServletOutputStream getOutputStream() throws IOException {
-        return null;
-    }
-
+public class HttpServletResponseAdapter implements HttpServletResponse {
 
     @Override
     public void addCookie(Cookie cookie) {
@@ -142,13 +85,20 @@ public class Response implements HttpServletResponse {
 
     }
 
+    @Override
+    public void setStatus(int sc) {
 
+    }
 
     @Override
     public void setStatus(int sc, String sm) {
 
     }
 
+    @Override
+    public int getStatus() {
+        return 0;
+    }
 
     @Override
     public String getHeader(String name) {
@@ -171,6 +121,21 @@ public class Response implements HttpServletResponse {
     }
 
     @Override
+    public String getContentType() {
+        return null;
+    }
+
+    @Override
+    public ServletOutputStream getOutputStream() throws IOException {
+        return null;
+    }
+
+    @Override
+    public PrintWriter getWriter() throws IOException {
+        return null;
+    }
+
+    @Override
     public void setCharacterEncoding(String charset) {
 
     }
@@ -180,7 +145,15 @@ public class Response implements HttpServletResponse {
 
     }
 
+    @Override
+    public void setContentLengthLong(long len) {
 
+    }
+
+    @Override
+    public void setContentType(String type) {
+
+    }
 
     @Override
     public void setBufferSize(int size) {

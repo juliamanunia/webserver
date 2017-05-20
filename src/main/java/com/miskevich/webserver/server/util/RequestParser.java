@@ -1,21 +1,26 @@
 package com.miskevich.webserver.server.util;
 
-import com.miskevich.webserver.model.HttpMethod;
-import com.miskevich.webserver.model.StaticResourceRequest;
+import com.miskevich.webserver.model.common.HttpMethod;
+import com.miskevich.webserver.model.resources.StaticResourceRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
 public class RequestParser {
 
+    private static final Logger LOG = LoggerFactory.getLogger(RequestParser.class);
+
     public static StaticResourceRequest toRequest(BufferedReader reader){
         StaticResourceRequest staticResourceRequest = new StaticResourceRequest();
         try {
             injectUrlAndMethod(staticResourceRequest, reader.readLine());
             injectHeaders(staticResourceRequest, reader);
-            System.out.println("Parsed request " + staticResourceRequest);
+            LOG.info("Parsed request " + staticResourceRequest);
             return staticResourceRequest;
         } catch (IOException e) {
+            LOG.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }

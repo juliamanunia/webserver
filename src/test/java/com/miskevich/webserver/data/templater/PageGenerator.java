@@ -1,4 +1,4 @@
-package com.miskevich.webserver.server.templater;
+package com.miskevich.webserver.data.templater;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

@@ -1,36 +1,41 @@
 package com.miskevich.webserver.server.util;
 
-import com.miskevich.webserver.model.Resource;
-import com.miskevich.webserver.model.Response;
+import com.miskevich.webserver.model.resources.Resource;
+import com.miskevich.webserver.model.ServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ResponseHeaderGenerator {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ResponseHeaderGenerator.class);
     private static final String OK = "HTTP/1.1 200 OK";
     private static final String NOT_FOUND = "HTTP/1.1 404 Not found";
 
-    public static String generateHeadersForServlet(Response response, boolean error){
+    public static String generateHeadersForServlet(ServletResponse servletResponse, boolean error){
         StringBuilder responseHeaders = new StringBuilder(error ? NOT_FOUND : OK);
         responseHeaders.append("\n");
 
-        if(null != response.getContentType()){
+        if(null != servletResponse.getContentType()){
             responseHeaders
                     .append("Content-Type: ")
-                    .append(response.getContentType())
+                    .append(servletResponse.getContentType())
                     .append("\n");
         }
-        if(response.getContentLengthLong() > 0){
+        if(servletResponse.getContentLengthLong() > 0){
             responseHeaders
                     .append("Content-Length: ")
-                    .append(response.getContentLengthLong())
+                    .append(servletResponse.getContentLengthLong())
                     .append("\n");
         }
 
         injectStandardHeaders(responseHeaders);
         responseHeaders.append("\n");
 
+        LOG.info("Headers for servlet were generated");
         return responseHeaders.toString();
     }
 
@@ -41,6 +46,7 @@ public class ResponseHeaderGenerator {
         injectStandardHeaders(responseHeaders);
         responseHeaders.append("\n");
 
+        LOG.info("Headers for static resource were generated");
         return responseHeaders.toString();
     }
 
