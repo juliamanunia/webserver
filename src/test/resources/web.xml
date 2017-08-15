@@ -1,0 +1,25 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <servlet>
+        <servlet-name>ExampleServlet</servlet-name>
+        <servlet-class>com.miskevich.tomcatexample.web.servlet.ExampleServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ExampleServlet</servlet-name>
+        <url-pattern>/example</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SecondServlet</servlet-name>
+        <servlet-class>com.miskevich.tomcatexample.web.servlet.SecondServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SecondServlet</servlet-name>
+        <url-pattern>/second</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SecondServlet</servlet-name>
+        <url-pattern>/secondNext</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -2,9 +2,6 @@
 *.class
 *.idea
 *.iml
-*.log
 
-# Package Files #
-*.jar
-*.war
-*.ear
+src/test/java/com/miskevich/webserver/server/util/Test.java
+target/

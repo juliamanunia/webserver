@@ -1,0 +1,46 @@
+Hello from Julia!
+Created: example-0.0.1.war
+Hello from Julia!
+Created: example.war
+Hello from Julia!
+Hello from Julia!
+Created: example-0.0.1.war
+Created: example-0.0.1.war
+Hello from Julia!
+Hello from Julia!
+Created: example.war
+Created: example.war
+Hello from Julia!
+Hello from Julia!
+Bye-bye from Julia!
+Hello from Julia!
+Hello from Julia!
+Hello from Julia!
+Created: example-0.0.1.war
+Created: example-0.0.1.war
+Created: example-0.0.1.war
+Created: example-0.0.1.war
+Created: example-0.0.1.war
+Created: example-0.0.1
+Exception in thread "main" java.lang.RuntimeException: java.io.FileNotFoundException: src/main/webapp/example-0.0.1 (Is a directory)
+	at com.miskevich.manuniaweb.utils.zip.Unzipper.unzip(Unzipper.java:34)
+	at com.miskevich.manuniaweb.ManuniaWebServer.main(ManuniaWebServer.java:19)
+Caused by: java.io.FileNotFoundException: src/main/webapp/example-0.0.1 (Is a directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at com.miskevich.manuniaweb.utils.zip.Unzipper.unzip(Unzipper.java:20)
+	... 1 more
+Hello from Julia!
+Hello from Julia!
+Hello from Julia!
+Hello from Julia!
+Created: example-0.0.1.war
+Created: example-0.0.1.war
+Created: example-0.0.1.war
+Created: example-0.0.1.war
+Hello from Julia!
+Hello from Julia!
+Hello from Julia!
+Hello from Julia!

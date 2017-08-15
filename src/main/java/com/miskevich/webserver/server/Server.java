@@ -35,7 +35,6 @@ public class Server implements Runnable {
         this.servletContext = servletContext;
     }
 
-    @Override
     public void run() {
         try {
             ServerSocket serverSocket = new ServerSocket(port);

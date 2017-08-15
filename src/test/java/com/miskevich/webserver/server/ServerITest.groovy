@@ -2,10 +2,12 @@ package com.miskevich.webserver.server
 
 import com.miskevich.webserver.server.util.ServletContext
 import com.miskevich.webserver.data.servlet.*
+import org.testng.annotations.Test
 
-class ServerITest extends GroovyTestCase{
+class ServerITest {
 
-    void testThreadPoolServerWithServlet(){
+    @Test
+    void testThreadPoolServerWithServlet() {
         IndexServlet indexServlet = new IndexServlet()
 
         ServletContext context = new ServletContext()
