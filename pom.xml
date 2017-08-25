@@ -6,13 +6,12 @@
 
     <groupId>com.miskevich</groupId>
     <artifactId>webserver</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <properties>
         <gmaven.version>1.5</gmaven.version>
         <groovy.version>2.4.10</groovy.version>
         <surefire.version>2.20</surefire.version>
-        <pom.basedir>webserver</pom.basedir>
         <testng.version>6.9.9</testng.version>
         <freemarker.version>2.3.20</freemarker.version>
         <servlet.version>3.1.0</servlet.version>
@@ -98,13 +97,12 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
-        <!--TEST-->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>${groovy.version}</version>
-            <scope>test</scope>
         </dependency>
+        <!--TEST-->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

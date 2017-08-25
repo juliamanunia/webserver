@@ -24,4 +24,8 @@ public class ServletContext {
     public HttpServlet getServlet(String path){
         return servletHolder.get(path);
     }
+
+    public Map<String, HttpServlet> getServletHolder() {
+        return servletHolder;
+    }
 }

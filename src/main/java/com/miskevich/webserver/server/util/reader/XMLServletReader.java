@@ -2,6 +2,8 @@ package com.miskevich.webserver.server.util.reader;
 
 
 import com.miskevich.webserver.model.ServletDefinition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XMLServletReader implements ServletReader {
+
+    private static final Logger LOG = LoggerFactory.getLogger(XMLServletReader.class);
 
     public List<ServletDefinition> getServlets(String path) {
         List<ServletDefinition> servletDefinitions = new ArrayList<>();
@@ -34,6 +38,7 @@ public class XMLServletReader implements ServletReader {
                 servletDefinitions.add(getServletDefinition(servletNode, document));
             }
         } catch (ParserConfigurationException | SAXException | IOException e) {
+            LOG.error(e.getMessage());
             throw new RuntimeException(e);
         }
 

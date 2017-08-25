@@ -38,7 +38,12 @@ public class RequestHandler implements Runnable{
             servletRequest.setMethod(staticResourceRequest.getMethod());
 
             ServletResponse servletResponse = new ServletResponse();
-            HttpServlet servlet = servletContext.getServlet(staticResourceRequest.getUrl());
+            String fullUrlFromRequest = staticResourceRequest.getUrl();
+            int secondIndexOfSlash = fullUrlFromRequest.indexOf("/", fullUrlFromRequest.indexOf("/") + 1);
+            String servleUrl = fullUrlFromRequest.substring(secondIndexOfSlash);
+            HttpServlet servlet = servletContext.getServlet(servleUrl);
+            //HttpServlet servlet = servletContext.getServlet(staticResourceRequest.getUrl());
+            LOG.info("Found servlet: " + servleUrl);
 
             if(null != servlet){
                 processServlet(writer, servletRequest, servletResponse, servlet);
