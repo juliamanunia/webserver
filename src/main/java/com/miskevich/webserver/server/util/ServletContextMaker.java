@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -20,6 +21,7 @@ public class ServletContextMaker implements Runnable {
 
     private static final Path FILE_LOCATION = Paths.get("src", "main", "webapp");
     private final String CLASSES = "classes";
+    private final String LIB = "lib";
     private static final int BUFFER_SIZE = 1024;
     private String zipFileName;
     private File destinationDirectoryForUnzippedFile;
@@ -92,7 +94,7 @@ public class ServletContextMaker implements Runnable {
         for (ServletDefinition servletDefinition : servletDefinitions) {
             try {
                 File classesDirectory = new File(Paths.get(webXmlDirectory.toString(), CLASSES).toString());
-                URL [] urls = {classesDirectory.toURI().toURL()};
+                URL[] urls = {classesDirectory.toURI().toURL()};
                 URLClassLoader classLoader = new URLClassLoader(urls);
                 Class<?> clazz = classLoader.loadClass(servletDefinition.getClassName());
 
@@ -106,6 +108,48 @@ public class ServletContextMaker implements Runnable {
             }
         }
         return context;
+    }
+
+    void loadLibs(File webXmlDirectory) {
+        File libDirectory = new File(Paths.get(webXmlDirectory.toString(), LIB).toString());
+        try {
+            URL[] urls = {libDirectory.toURI().toURL()};
+            URLClassLoader classLoader = new URLClassLoader(urls);
+            File[] jars = getJarsList(libDirectory);
+            for (File jar : jars) {
+                System.out.println(jar);
+                List<String> classes = getClassesList(jar);
+                for (String clazz : classes) {
+                    System.out.println(clazz);
+                    classLoader.loadClass(clazz);
+                }
+            }
+        } catch (MalformedURLException | ClassNotFoundException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    private File[] getJarsList(File libDirectory) {
+        FilenameFilter filter = (dir, name) -> name.endsWith(".jar");
+        return libDirectory.listFiles(filter);
+    }
+
+    private List<String> getClassesList(File jar) {
+        List<String> classes = new ArrayList<>();
+        try {
+            ZipInputStream zipInputStream = new ZipInputStream(new BufferedInputStream(new FileInputStream(jar)));
+            for (ZipEntry entry = zipInputStream.getNextEntry(); entry != null; entry = zipInputStream.getNextEntry()) {
+                if (!entry.isDirectory() && entry.getName().endsWith(".class")) {
+                    String className = entry.getName().replace('/', '.');
+                    classes.add(className.substring(0, className.length() - ".class".length()));
+                }
+            }
+        } catch (IOException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return classes;
     }
 
     public void run() {
