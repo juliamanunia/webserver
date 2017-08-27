@@ -8,7 +8,7 @@ class ManuniaWebServerITest {
 
     @Test
     void runServer(){
-        def context = new ServletContext();
+        def context = new ServletContext()
         DirectoryScanner directoryScanner = new DirectoryScanner(context)
         while (true) {
             directoryScanner.scanDirectoryForNewWars()

@@ -117,13 +117,14 @@ public class ServletContextMaker implements Runnable {
             URLClassLoader classLoader = new URLClassLoader(urls);
             File[] jars = getJarsList(libDirectory);
             for (File jar : jars) {
-                System.out.println(jar);
+                //System.out.println(jar);
                 List<String> classes = getClassesList(jar);
                 for (String clazz : classes) {
-                    System.out.println(clazz);
+                    //System.out.println(clazz);
                     classLoader.loadClass(clazz);
                 }
             }
+            LOG.info("Classes were loaded for libs, libDirectory: " + libDirectory);
         } catch (MalformedURLException | ClassNotFoundException e) {
             LOG.error(e.getMessage());
             throw new RuntimeException(e);
@@ -166,6 +167,7 @@ public class ServletContextMaker implements Runnable {
         XMLServletReader xmlServletReader = new XMLServletReader();
         List<ServletDefinition> servletDefinitions = xmlServletReader.getServlets(webXml);
         initializeServlets(servletDefinitions, webXmlDirectory);
+        loadLibs(webXmlDirectory);
 
     }
 }

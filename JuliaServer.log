@@ -511,3 +511,34 @@
 09:45:41.812 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@4085fd3c was registered by path /example
 09:45:45.282 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
 09:45:45.286 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+09:56:58.909 [main] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/test/resources/tomcat-example-0.0.1/WEB-INF/lib
+11:06:01.539 [main] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example1.war
+11:06:01.595 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example1.war was unzipped
+11:06:01.663 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@5148d5d2 was registered by path /example
+11:08:59.866 [main] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example1.war
+11:08:59.900 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example1.war was unzipped
+11:08:59.954 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@380ce3b1 was registered by path /example
+11:11:01.458 [main] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example1.war
+11:11:01.492 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example1.war was unzipped
+11:11:01.544 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@28b7ad2 was registered by path /example
+11:11:01.605 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example1/WEB-INF/lib
+11:16:09.677 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+11:16:09.715 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+11:16:09.904 [pool-2-thread-1] WARN  c.m.webserver.file.ResourceReader - src/main/webapp/example1/example
+11:17:08.679 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example1.war
+11:17:08.710 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example1.war was unzipped
+11:17:08.772 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@3352f836 was registered by path /example
+11:17:08.803 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example1/WEB-INF/lib
+11:17:17.838 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+11:17:17.843 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+11:17:17.847 [pool-2-thread-1] WARN  c.m.webserver.server.RequestHandler - src/main/webapp/WEB-INF/index.html (No such file or directory)
+11:22:17.959 [pool-2-thread-3] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+11:22:17.959 [pool-2-thread-3] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+11:22:17.962 [pool-2-thread-3] WARN  c.m.webserver.server.RequestHandler - src/main/webapp/WEB-INF/index.html (No such file or directory)
+11:23:41.727 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example1.war
+11:23:41.747 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example1.war was unzipped
+11:23:41.837 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@1202b13b was registered by path /example
+11:23:41.868 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example1/WEB-INF/lib
+11:23:46.485 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+11:23:46.489 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+11:25:37.602 [pool-2-thread-1] WARN  c.m.webserver.server.RequestHandler - src/main/webapp/WEB-INF/index.html (No such file or directory)
