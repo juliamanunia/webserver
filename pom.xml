@@ -102,6 +102,13 @@
             <artifactId>groovy-all</artifactId>
             <version>${groovy.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jodd</groupId>
+            <artifactId>jodd-core</artifactId>
+            <version>3.5</version>
+        </dependency>
+
+
         <!--TEST-->
         <dependency>
             <groupId>org.testng</groupId>

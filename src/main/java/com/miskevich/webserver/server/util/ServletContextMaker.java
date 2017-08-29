@@ -2,12 +2,16 @@ package com.miskevich.webserver.server.util;
 
 import com.miskevich.webserver.model.ServletDefinition;
 import com.miskevich.webserver.server.util.reader.XMLServletReader;
+import jodd.util.ClassLoaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServlet;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
@@ -125,8 +129,35 @@ public class ServletContextMaker implements Runnable {
                 }
             }
             LOG.info("Classes were loaded for libs, libDirectory: " + libDirectory);
-        } catch (MalformedURLException | ClassNotFoundException e) {
+            //classLoader.getResources("src/main/webapp/example1");
+
+//            ClassLoader currentThreadClassLoader = Thread.currentThread().getContextClassLoader();
+//            URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{new File("src/main/webapp/example1").toURL()}, currentThreadClassLoader);
+//            Thread.currentThread().setContextClassLoader(urlClassLoader);
+
+            addPath("src/main/webapp/example1");
+            //URLClassLoader.newInstance(new URL[] {new URL("file:/src/main/webapp/example1/example")});
+
+//            String addonClasspath = "src/main/webapp/example1";
+//            ClassLoaderUtil.addFileToClassPath(new File(addonClasspath), classLoader);
+            LOG.info("Class loader was configured");
+        } catch (ClassNotFoundException | IOException e) {
             LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void addPath(String s) {
+        File f = new File(s);
+        URI u = f.toURI();
+        URLClassLoader urlClassLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+        Class<URLClassLoader> urlClass = URLClassLoader.class;
+        Method method;
+        try {
+            method = urlClass.getDeclaredMethod("addURL", URL.class);
+            method.setAccessible(true);
+            method.invoke(urlClassLoader, u.toURL());
+        } catch (NoSuchMethodException | MalformedURLException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
