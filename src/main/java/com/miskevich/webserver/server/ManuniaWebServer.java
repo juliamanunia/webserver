@@ -17,8 +17,8 @@ public class ManuniaWebServer {
         serverThread.start();
         scannerThread.start();
         // TODO: run existing webapps after start of container
-        ServletContextMaker alreadyUnzippedContext = new ServletContextMaker(context);
-        alreadyUnzippedContext.initializeExistingContext();
+        //ServletContextMaker alreadyUnzippedContext = new ServletContextMaker(context);
+        //alreadyUnzippedContext.initializeExistingContext();
     }
 
     private static class ScanWorker implements Runnable {

@@ -1035,3 +1035,13 @@ java.lang.ClassNotFoundException: com.mysql.cj.api.CacheAdapter
 15:33:05.832 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Finished for JAR: src/main/webapp/movie/WEB-INF/lib/commons-logging-1.2.jar
 15:42:01.835 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
 15:42:01.964 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+21:37:55.616 [main] ERROR c.m.w.s.util.ServletContextMaker - web.xml doesn't exist in dir/WEB-INF!!!
+21:38:51.803 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+21:38:51.815 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+21:38:51.838 [pool-1-thread-1] ERROR c.m.w.s.util.ServletContextMaker - web.xml doesn't exist in src/main/webapp/movie/WEB-INF!!!
+21:40:47.585 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+21:40:47.698 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+21:44:45.212 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie_2.war
+21:44:45.329 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie_2.war was unzipped
+21:44:45.594 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Finished for JAR: src/main/webapp/movie_2/WEB-INF/lib/jackson-core-2.8.8.jar
+21:44:45.636 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Finished for JAR: src/main/webapp/movie_2/WEB-INF/lib/commons-logging-1.2.jar

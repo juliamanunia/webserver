@@ -12,7 +12,6 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -93,7 +92,7 @@ public class ServletContextMaker implements Runnable {
         File[] listFiles = webXmlDirectory.listFiles(filter);
         if (listFiles != null && listFiles.length == 1) {
             return listFiles[0].toString();
-        }else if(listFiles == null){
+        } else if (listFiles == null) {
             LOG.error("web.xml doesn't exist in " + webXmlDirectory + "!!!");
             throw new FileNotFoundException("web.xml doesn't exist in " + webXmlDirectory + "!!!");
         }
@@ -122,40 +121,19 @@ public class ServletContextMaker implements Runnable {
         return context;
     }
 
-//    void loadLibs(File webXmlDirectory) {
-//        File libDirectory = new File(Paths.get(webXmlDirectory.toString(), LIB).toString());
-//        try {
-//            URL[] urls = {libDirectory.toURI().toURL()};
-//            URLClassLoader classLoader = new URLClassLoader(urls);
-//            File[] jars = getJarsList(libDirectory);
-//            for (File jar : jars) {
-//                List<String> classes = getClassesList(jar);
-//                for (String className : classes) {
-//                    System.out.println("className: " + className);
-//                    classLoader.loadClass(className);
-//                }
-//            }
-//            LOG.info("Classes were loaded for libs, libDirectory: " + libDirectory);
-//            LOG.info("Class loader was configured");
-//        } catch (ClassNotFoundException | IOException e) {
-//            LOG.error("ERROR", e);
-//            throw new RuntimeException(e);
-//        }
-//    }
-
-    void loadLibsA(File webXmlDirectory){
+    void loadLibs(File webXmlDirectory) {
         File libDirectory = new File(Paths.get(webXmlDirectory.toString(), LIB).toString());
         File[] jars = getJarsList(libDirectory);
-        for (File jar : jars){
+        for (File jar : jars) {
             try {
                 JarFile jarFile = new JarFile(jar);
                 Enumeration<JarEntry> jarEntryEnumeration = jarFile.entries();
                 URL[] urls = {new URL("jar:file:" + jar + "!/")};
                 URLClassLoader urlClassLoader = URLClassLoader.newInstance(urls);
 
-                while (jarEntryEnumeration.hasMoreElements()){
+                while (jarEntryEnumeration.hasMoreElements()) {
                     JarEntry jarEntry = jarEntryEnumeration.nextElement();
-                    if(jarEntry.isDirectory() || !jarEntry.getName().endsWith(".class")){
+                    if (jarEntry.isDirectory() || !jarEntry.getName().endsWith(".class")) {
                         continue;
                     }
                     String className = jarEntry.getName().substring(0, jarEntry.getName().length() - 6);
@@ -179,37 +157,14 @@ public class ServletContextMaker implements Runnable {
         return libDirectory.listFiles(filter);
     }
 
-    private List<String> getClassesList(File jar) {
-        List<String> classes = new ArrayList<>();
-        try {
-            ZipInputStream zipInputStream = new ZipInputStream(new BufferedInputStream(new FileInputStream(jar)));
-            for (ZipEntry entry = zipInputStream.getNextEntry(); entry != null; entry = zipInputStream.getNextEntry()) {
-                if (!entry.isDirectory() && entry.getName().endsWith(".class")) {
-                    String className = entry.getName().replace('/', '.');
-                    classes.add(className.substring(0, className.length() - ".class".length()));
-                }
-            }
-        } catch (IOException e) {
-            LOG.error(e.getMessage());
-            throw new RuntimeException(e);
-        }
-        return classes;
-    }
-
-    public void run() {
-        File webXmlDirectory = generateDirectoryNames(zipFileName);
-        unzip();
-        initializeContext(webXmlDirectory);
-    }
-
-    public void initializeExistingContext(){
+    public void initializeExistingContext() {
         //TODO: find all not war dirs, for each dir : dirs
 
         File webXmlDirectory = Paths.get("dir", "WEB-INF").toFile();
         initializeContext(webXmlDirectory);
     }
 
-    private void initializeContext(File webXmlDirectory){
+    private void initializeContext(File webXmlDirectory) {
         String webXml;
         try {
             webXml = findWebXml(webXmlDirectory);
@@ -219,7 +174,14 @@ public class ServletContextMaker implements Runnable {
 
         XMLServletReader xmlServletReader = new XMLServletReader();
         List<ServletDefinition> servletDefinitions = xmlServletReader.getServlets(webXml);
-        loadLibsA(webXmlDirectory);
+        loadLibs(webXmlDirectory);
         initializeServlets(servletDefinitions, webXmlDirectory);
+    }
+
+    @Override
+    public void run() {
+        File webXmlDirectory = generateDirectoryNames(zipFileName);
+        unzip();
+        initializeContext(webXmlDirectory);
     }
 }
