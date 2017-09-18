@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider
 class WebXmlDefinitionsProvider {
 
     @DataProvider(name = 'provideWevXmlDefinitions')
-    static Object[][] provideWevXmlDefinitions(){
+    static Object[][] provideWevXmlDefinitions() {
         def servletDefinitions = [
                 new ServletDefinition(name: 'ExampleServlet', className: 'com.miskevich.tomcatexample.web.servlet.ExampleServlet', urls: ['/example']),
                 new ServletDefinition(name: 'SecondServlet', className: 'com.miskevich.tomcatexample.web.servlet.SecondServlet', urls: ['/second', '/secondNext'])

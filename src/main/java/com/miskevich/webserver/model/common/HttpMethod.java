@@ -14,9 +14,13 @@ public enum HttpMethod {
         this.method = method;
     }
 
+    public String getMethod() {
+        return method;
+    }
+
     public static HttpMethod getMethodById(String method) {
         for (HttpMethod httpMethod : values()) {
-            if(httpMethod.method.equalsIgnoreCase(method)){
+            if (httpMethod.method.equalsIgnoreCase(method)) {
                 return httpMethod;
             }
         }

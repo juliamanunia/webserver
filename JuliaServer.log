@@ -671,3 +671,367 @@
 11:53:57.554 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
 11:53:57.559 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
 11:53:57.563 [pool-2-thread-1] WARN  c.m.webserver.server.RequestHandler - /src/main/webapp/WEB-INF/index.html (No such file or directory)
+17:23:13.662 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example1.war
+17:23:14.086 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example1.war was unzipped
+17:30:11.456 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@5908b317 was registered by path /example
+17:30:40.276 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example1.war
+17:30:40.466 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example1.war was unzipped
+17:32:57.829 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@5908b317 was registered by path /example
+17:37:31.137 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example1/WEB-INF/lib
+17:38:17.154 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+17:39:02.773 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/', method=GET, headers={Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+17:39:11.561 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /
+17:39:15.645 [pool-2-thread-1] WARN  c.m.webserver.file.ResourceReader - src/main/webapp/example1 (Is a directory)
+17:39:15.777 [pool-2-thread-3] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+17:39:37.666 [pool-2-thread-4] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/example', method=GET, headers={Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+17:39:37.667 [pool-2-thread-4] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+17:39:37.704 [pool-2-thread-4] WARN  c.m.webserver.server.RequestHandler - /src/main/webapp/WEB-INF/index.html (No such file or directory)
+17:39:53.927 [pool-2-thread-6] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+17:39:53.927 [pool-2-thread-6] INFO  c.m.webserver.server.RequestHandler - Found servlet: /
+17:39:53.927 [pool-2-thread-6] WARN  c.m.webserver.file.ResourceReader - src/main/webapp/example1 (Is a directory)
+17:40:51.431 [pool-2-thread-8] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+17:40:51.472 [pool-2-thread-8] INFO  c.m.webserver.server.RequestHandler - Found servlet: /
+17:40:51.472 [pool-2-thread-8] WARN  c.m.webserver.file.ResourceReader - src/main/webapp/example1 (Is a directory)
+17:41:06.879 [pool-2-thread-3] INFO  c.m.webserver.server.RequestHandler - Found servlet: /
+17:41:06.880 [pool-2-thread-3] WARN  c.m.webserver.file.ResourceReader - src/main/webapp/example1 (Is a directory)
+17:41:26.395 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example1.war
+17:41:26.575 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example1.war was unzipped
+17:41:32.623 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@75fa4548 was registered by path /example
+17:41:33.958 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example1/WEB-INF/lib
+17:41:33.958 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+17:41:39.170 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+17:52:31.552 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /
+17:52:31.584 [pool-2-thread-1] WARN  c.m.webserver.file.ResourceReader - src/main/webapp/example1 (Is a directory)
+17:52:40.348 [pool-2-thread-3] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/example', method=GET, headers={Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+17:52:48.862 [pool-2-thread-3] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+17:53:52.295 [pool-2-thread-3] WARN  c.m.webserver.server.RequestHandler - /src/main/webapp/WEB-INF/index.html (No such file or directory)
+17:53:52.295 [pool-2-thread-4] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+17:53:52.295 [pool-2-thread-4] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+17:53:52.295 [pool-2-thread-4] WARN  c.m.webserver.server.RequestHandler - /src/main/webapp/WEB-INF/index.html (No such file or directory)
+17:57:07.926 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example1.war
+17:57:07.964 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example1.war was unzipped
+17:57:08.188 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@5908b317 was registered by path /example
+17:57:08.282 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example1/WEB-INF/lib
+17:57:08.284 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+17:57:22.179 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+17:57:25.738 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:10:38.154 [pool-2-thread-1] WARN  c.m.webserver.server.RequestHandler - /src/main/webapp/WEB-INF/index.html (No such file or directory)
+18:33:39.065 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+18:33:39.102 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+18:33:39.269 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@1108c855 was registered by path /example
+18:33:39.345 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+18:33:39.346 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+18:33:55.964 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:33:55.969 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:33:56.045 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+18:33:56.090 [pool-2-thread-2] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:37:24.678 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+18:37:24.718 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+18:37:24.888 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@28f92b44 was registered by path /example
+18:37:24.949 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+18:37:24.954 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+18:37:47.475 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:37:50.491 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:37:50.556 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+18:38:56.680 [pool-2-thread-2] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:39:00.285 [pool-2-thread-4] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:39:02.128 [pool-2-thread-4] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:40:54.551 [pool-2-thread-4] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+18:41:02.396 [pool-2-thread-5] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:44:14.562 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+18:44:14.603 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+18:44:14.915 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@7962c445 was registered by path /example
+18:44:14.984 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+18:44:14.984 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+18:44:21.865 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:44:23.676 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:44:23.995 [pool-2-thread-3] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:44:24.598 [pool-2-thread-3] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:44:29.617 [pool-2-thread-5] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:44:31.134 [pool-2-thread-5] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:44:42.889 [pool-2-thread-7] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:44:49.384 [pool-2-thread-7] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:45:25.158 [pool-2-thread-9] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:45:30.925 [pool-2-thread-9] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:48:59.759 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+18:48:59.781 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+18:48:59.895 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@6fb9fa61 was registered by path /example
+18:48:59.978 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+18:48:59.982 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+18:49:11.251 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:49:11.255 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+18:49:11.321 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+18:49:11.366 [pool-2-thread-2] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+18:53:49.955 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+18:53:50.032 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+18:53:50.194 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@6fb9fa61 was registered by path /example
+18:53:50.259 [pool-1-thread-1] ERROR c.m.w.s.util.ServletContextMaker - freemarker.cache.CacheStorage
+18:56:37.575 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+18:56:37.657 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+18:56:37.744 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@6fb9fa61 was registered by path /example
+18:56:37.837 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classfreemarker.cache.CacheStorage
+18:56:37.838 [pool-1-thread-1] ERROR c.m.w.s.util.ServletContextMaker - freemarker.cache.CacheStorage
+18:59:30.210 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+18:59:30.310 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+18:59:30.438 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@14dfa41 was registered by path /example
+18:59:30.508 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classfreemarker.cache.CacheStorage
+18:59:30.512 [pool-1-thread-1] ERROR c.m.w.s.util.ServletContextMaker - Error
+java.lang.ClassNotFoundException: freemarker.cache.CacheStorage
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at com.miskevich.webserver.server.util.ServletContextMaker.loadLibs(ServletContextMaker.java:127)
+	at com.miskevich.webserver.server.util.ServletContextMaker.run(ServletContextMaker.java:175)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+20:12:51.488 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+20:12:51.566 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+20:12:51.683 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@284947ff was registered by path /example
+20:12:51.691 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.HandlesTypes
+20:12:51.692 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.HttpConstraint
+20:12:51.692 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.HttpMethodConstraint
+20:12:51.693 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.MultipartConfig
+20:12:51.693 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.ServletSecurity$EmptyRoleSemantic
+20:12:51.694 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.ServletSecurity$TransportGuarantee
+20:12:51.694 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.ServletSecurity
+20:12:51.695 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.WebFilter
+20:12:51.695 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.WebInitParam
+20:12:51.696 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.WebListener
+20:12:51.696 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.annotation.WebServlet
+20:12:51.697 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.AsyncContext
+20:12:51.697 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.AsyncEvent
+20:12:51.698 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.AsyncListener
+20:12:51.698 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.descriptor.JspConfigDescriptor
+20:12:51.707 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.descriptor.JspPropertyGroupDescriptor
+20:12:51.708 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.descriptor.TaglibDescriptor
+20:12:51.709 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.DispatcherType
+20:12:51.710 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.Filter
+20:12:51.711 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.FilterChain
+20:12:51.711 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.FilterConfig
+20:12:51.712 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.FilterRegistration$Dynamic
+20:12:51.715 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.FilterRegistration
+20:12:51.715 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.GenericServlet
+20:12:51.716 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.Cookie
+20:12:51.716 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpServlet
+20:12:51.716 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpServletRequest
+20:12:51.717 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpServletRequestWrapper
+20:12:51.718 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpServletResponse
+20:12:51.718 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpServletResponseWrapper
+20:12:51.719 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpSession
+20:12:51.719 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpSessionActivationListener
+20:12:51.720 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpSessionAttributeListener
+20:12:51.720 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpSessionBindingEvent
+20:12:51.721 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpSessionBindingListener
+20:12:51.721 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpSessionContext
+20:12:51.721 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpSessionEvent
+20:12:51.722 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpSessionIdListener
+20:12:51.722 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpSessionListener
+20:12:51.726 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpUpgradeHandler
+20:12:51.726 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.HttpUtils
+20:12:51.727 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.NoBodyOutputStream
+20:12:51.728 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.NoBodyResponse
+20:12:51.729 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.Part
+20:12:51.729 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.http.WebConnection
+20:12:51.729 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.HttpConstraintElement
+20:12:51.730 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.HttpMethodConstraintElement
+20:12:51.730 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.MultipartConfigElement
+20:12:51.731 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ReadListener
+20:12:51.731 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.Registration$Dynamic
+20:12:51.731 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.Registration
+20:12:51.731 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.RequestDispatcher
+20:12:51.732 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.Servlet
+20:12:51.732 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletConfig
+20:12:51.732 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletContainerInitializer
+20:12:51.733 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletContext
+20:12:51.734 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletContextAttributeEvent
+20:12:51.735 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletContextAttributeListener
+20:12:51.735 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletContextEvent
+20:12:51.735 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletContextListener
+20:12:51.736 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletException
+20:12:51.736 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletInputStream
+20:12:51.736 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletOutputStream
+20:12:51.736 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletRegistration$Dynamic
+20:12:51.737 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletRegistration
+20:12:51.737 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletRequest
+20:12:51.737 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletRequestAttributeEvent
+20:12:51.741 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletRequestAttributeListener
+20:12:51.742 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletRequestEvent
+20:12:51.742 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletRequestListener
+20:12:51.742 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletRequestWrapper
+20:12:51.742 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletResponse
+20:12:51.743 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletResponseWrapper
+20:12:51.743 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.ServletSecurityElement
+20:12:51.743 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.SessionCookieConfig
+20:12:51.744 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.SessionTrackingMode
+20:12:51.744 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.SingleThreadModel
+20:12:51.744 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.UnavailableException
+20:12:51.745 [pool-1-thread-1] TRACE c.m.w.s.util.ServletContextMaker - Loading classjavax.servlet.WriteListener
+20:12:51.745 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+20:12:51.745 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+20:20:25.124 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example', method=GET, headers={Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:20:25.258 [pool-2-thread-2] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example', method=GET, headers={Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:20:25.266 [pool-2-thread-5] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example', method=GET, headers={Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:20:35.768 [pool-2-thread-7] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:20:35.768 [pool-2-thread-7] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+20:20:35.856 [pool-2-thread-7] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+20:20:36.002 [pool-2-thread-8] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:20:36.018 [pool-2-thread-3] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:25:36.272 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+20:25:36.286 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+20:25:36.361 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@35ee2a76 was registered by path /example
+20:25:36.387 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+20:25:36.387 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+20:25:44.516 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:25:44.518 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+20:25:44.580 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+20:25:44.686 [pool-2-thread-2] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Cache-Control= no-cache, Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:25:44.695 [pool-2-thread-3] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Cache-Control= no-cache, Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:25:44.717 [pool-2-thread-4] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Cache-Control= no-cache, Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:25:44.748 [pool-2-thread-8] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Cache-Control= no-cache, Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:27:27.387 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:27:27.387 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+20:27:27.388 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+20:27:27.608 [pool-2-thread-6] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:34:28.463 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+20:34:28.485 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+20:34:28.551 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@6fb9fa61 was registered by path /example
+20:34:28.579 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+20:34:28.579 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+20:34:40.227 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:34:40.237 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+20:34:40.296 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+20:34:40.540 [pool-2-thread-2] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:40:18.315 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+20:40:18.341 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+20:40:18.412 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@35ee2a76 was registered by path /example
+20:40:18.442 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+20:40:18.443 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+20:40:34.621 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:40:34.631 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+20:40:34.706 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+20:40:34.926 [pool-2-thread-2] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:40:35.027 [pool-2-thread-2] WARN  c.m.webserver.file.ResourceReader - src/main/webapp/favicon.ico
+20:59:36.853 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+20:59:36.867 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+20:59:36.957 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@1134a665 was registered by path /example
+20:59:36.984 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+20:59:36.985 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+20:59:51.711 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:59:51.723 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+20:59:51.779 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+20:59:51.951 [pool-2-thread-2] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/favicon.ico', method=GET, headers={Accept= image/webp,image/apng,image/*,*/*;q=0.8, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Referer= http, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+20:59:52.033 [pool-2-thread-2] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for static resource were generated
+21:00:35.531 [pool-2-thread-3] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+21:00:35.532 [pool-2-thread-3] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+21:00:35.543 [pool-2-thread-3] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+21:00:38.317 [pool-2-thread-4] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+21:00:38.318 [pool-2-thread-4] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+21:00:38.319 [pool-2-thread-4] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+21:00:40.335 [pool-2-thread-5] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+21:00:40.336 [pool-2-thread-5] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+21:00:40.337 [pool-2-thread-5] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+21:00:42.595 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+21:00:42.595 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+21:00:42.595 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+21:01:23.900 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+21:01:23.917 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+21:01:23.983 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@35ee2a76 was registered by path /example
+21:01:24.007 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+21:01:24.007 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+21:01:29.161 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+21:01:29.167 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+21:01:29.217 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+21:01:48.715 [pool-2-thread-2] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= max-age=0, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+21:01:48.715 [pool-2-thread-2] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+21:01:48.716 [pool-2-thread-2] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+21:01:55.125 [pool-2-thread-3] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+21:01:55.126 [pool-2-thread-3] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+21:01:55.126 [pool-2-thread-3] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+21:02:38.809 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+21:02:38.827 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+21:02:38.904 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@64908d25 was registered by path /example
+21:02:38.927 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+21:02:38.927 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+21:02:43.188 [pool-2-thread-1] INFO  c.m.w.server.util.RequestParser - Parsed request StaticRequest{url='/example-1/example', method=GET, headers={Cache-Control= no-cache, Accept= text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8, Upgrade-Insecure-Requests= 1, Connection= keep-alive, User-Agent= Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36, Host= localhost, Pragma= no-cache, Accept-Encoding= gzip, deflate, br, Accept-Language= ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4}}
+21:02:43.193 [pool-2-thread-1] INFO  c.m.webserver.server.RequestHandler - Found servlet: /example
+21:02:43.277 [pool-2-thread-1] INFO  c.m.w.s.util.ResponseHeaderGenerator - Headers for servlet were generated
+22:49:42.151 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+22:49:42.413 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+22:54:48.758 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+22:54:48.933 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+22:57:41.526 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+22:57:41.660 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+22:57:41.868 [pool-1-thread-1] ERROR c.m.w.s.util.ServletContextMaker - Error
+java.lang.ClassNotFoundException: com.mysql.cj.api.CacheAdapter
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at com.miskevich.webserver.server.util.ServletContextMaker.loadLibs(ServletContextMaker.java:126)
+	at com.miskevich.webserver.server.util.ServletContextMaker.run(ServletContextMaker.java:173)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+23:00:24.494 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+23:00:24.657 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+23:00:24.826 [pool-1-thread-1] ERROR c.m.w.s.util.ServletContextMaker - ERROR
+java.lang.ClassNotFoundException: com.mysql.cj.api.CacheAdapter
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at com.miskevich.webserver.server.util.ServletContextMaker.loadLibs(ServletContextMaker.java:127)
+	at com.miskevich.webserver.server.util.ServletContextMaker.run(ServletContextMaker.java:174)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+23:04:36.722 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+23:04:36.907 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+23:11:01.185 [pool-1-thread-1] ERROR c.m.w.s.util.ServletContextMaker - ERROR
+java.lang.ClassNotFoundException: com.mysql.cj.api.CacheAdapter
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at com.miskevich.webserver.server.util.ServletContextMaker.loadLibs(ServletContextMaker.java:127)
+	at com.miskevich.webserver.server.util.ServletContextMaker.run(ServletContextMaker.java:174)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+23:11:42.850 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: example-1.war
+23:11:42.871 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File example-1.war was unzipped
+23:11:42.971 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Classes were loaded for libs, libDirectory: src/main/webapp/example-1/WEB-INF/lib
+23:11:42.972 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Class loader was configured
+23:11:42.977 [pool-1-thread-1] INFO  c.m.w.server.util.ServletContext - Servlet com.miskevich.tomcatexample.web.servlet.ExampleServlet@6838453a was registered by path /example
+23:13:22.196 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+23:13:22.344 [pool-1-thread-2] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+23:13:22.429 [pool-1-thread-2] ERROR c.m.w.s.util.ServletContextMaker - ERROR
+java.lang.ClassNotFoundException: com.mysql.cj.api.CacheAdapter
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at com.miskevich.webserver.server.util.ServletContextMaker.loadLibs(ServletContextMaker.java:127)
+	at com.miskevich.webserver.server.util.ServletContextMaker.run(ServletContextMaker.java:174)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+14:38:58.284 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+14:38:58.652 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+14:45:25.107 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+14:45:25.281 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+14:50:13.097 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+14:50:13.240 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+15:12:56.051 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+15:12:56.167 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+15:13:20.858 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+15:13:21.036 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+15:14:17.041 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+15:14:17.156 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+15:25:53.329 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+15:25:53.412 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+15:25:53.681 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Finished for JAR: src/main/webapp/movie/WEB-INF/lib/jackson-core-2.8.8.jar
+15:25:53.742 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Finished for JAR: src/main/webapp/movie/WEB-INF/lib/commons-logging-1.2.jar
+15:33:05.479 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+15:33:05.573 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped
+15:33:05.784 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Finished for JAR: src/main/webapp/movie/WEB-INF/lib/jackson-core-2.8.8.jar
+15:33:05.832 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - Finished for JAR: src/main/webapp/movie/WEB-INF/lib/commons-logging-1.2.jar
+15:42:01.835 [Thread-3] INFO  c.m.w.server.util.DirectoryScanner - Found new war file: movie.war
+15:42:01.964 [pool-1-thread-1] INFO  c.m.w.s.util.ServletContextMaker - File movie.war was unzipped

@@ -12,7 +12,7 @@ public class RequestParser {
 
     private static final Logger LOG = LoggerFactory.getLogger(RequestParser.class);
 
-    public static StaticResourceRequest toRequest(BufferedReader reader){
+    public static StaticResourceRequest toRequest(BufferedReader reader) {
         StaticResourceRequest staticResourceRequest = new StaticResourceRequest();
         try {
             injectUrlAndMethod(staticResourceRequest, reader.readLine());
@@ -25,7 +25,7 @@ public class RequestParser {
         }
     }
 
-    private static void injectUrlAndMethod(StaticResourceRequest staticResourceRequest, String line){
+    private static void injectUrlAndMethod(StaticResourceRequest staticResourceRequest, String line) {
         String[] methodAndUrl = line.split(" ");
         staticResourceRequest.setMethod(HttpMethod.getMethodById(methodAndUrl[0]));
         staticResourceRequest.setUrl(methodAndUrl[1]);
@@ -33,7 +33,7 @@ public class RequestParser {
 
     private static void injectHeaders(StaticResourceRequest staticResourceRequest, BufferedReader reader) throws IOException {
         String parameter;
-        while (reader.ready() && !(parameter = reader.readLine()).isEmpty()){
+        while (reader.ready() && !(parameter = reader.readLine()).isEmpty()) {
             String[] nameAndValue = parameter.split(":");
             staticResourceRequest.addHeader(nameAndValue[0], nameAndValue[1]);
         }

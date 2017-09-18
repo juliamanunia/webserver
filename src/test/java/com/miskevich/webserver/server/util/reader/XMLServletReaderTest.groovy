@@ -1,7 +1,8 @@
 package com.miskevich.webserver.server.util.reader
 
-import org.testng.annotations.Test
 import com.miskevich.webserver.providers.WebXmlDefinitionsProvider
+import org.testng.annotations.Test
+
 import static org.testng.Assert.assertEquals
 
 class XMLServletReaderTest {

@@ -1,6 +1,4 @@
 import ch.qos.logback.classic.PatternLayout
-import ch.qos.logback.core.ConsoleAppender
-import ch.qos.logback.core.FileAppender
 
 import static ch.qos.logback.classic.Level.DEBUG
 import static ch.qos.logback.classic.Level.TRACE

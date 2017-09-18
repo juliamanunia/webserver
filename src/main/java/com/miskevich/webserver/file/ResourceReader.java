@@ -4,13 +4,17 @@ import com.miskevich.webserver.model.resources.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 
 public class ResourceReader {
 
+    private final Logger LOG = LoggerFactory.getLogger(getClass());
+
     private String path;
-    private static final Logger LOG = LoggerFactory.getLogger(ResourceReader.class);
 
     public ResourceReader(String path) {
         this.path = path;

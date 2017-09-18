@@ -1,8 +1,8 @@
 package com.miskevich.webserver.server
 
-class PerformanceTest extends GroovyTestCase{
+class PerformanceTest extends GroovyTestCase {
 
-    void testPerformanceForResourceLoading(){
+    void testPerformanceForResourceLoading() {
 
         final int ATTEMPTS = 20
         def total = 0
@@ -20,8 +20,8 @@ class PerformanceTest extends GroovyTestCase{
 
             long contentLength = 0
             String value
-            while (!(value = reader.readLine()).isEmpty()){
-                if(value.contains("Content-Length:")){
+            while (!(value = reader.readLine()).isEmpty()) {
+                if (value.contains("Content-Length:")) {
                     contentLength = Long.parseLong(value.substring(value.indexOf(" ") + 1))
                 }
 

@@ -10,7 +10,7 @@ public class ServletRequest extends HttpServletRequestAdapter {
 
     @Override
     public String getMethod() {
-        return method.toString();
+        return method.getMethod();
     }
 
     public void setMethod(HttpMethod method) {

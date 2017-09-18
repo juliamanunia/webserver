@@ -1,6 +1,5 @@
 package com.miskevich.webserver.server.util
 
-import com.miskevich.webserver.server.util.ServletContextMaker
 import com.miskevich.webserver.server.util.reader.XMLServletReader
 import org.testng.annotations.Test
 
@@ -29,7 +28,7 @@ class ServletContextMakerTest {
     }
 
     @Test
-    void testFindWebXmlSuccess(){
+    void testFindWebXmlSuccess() {
         def context = new ServletContext()
         def expectedWebXml = Paths.get('src', 'test', 'resources', 'tomcat-example-0.0.1/WEB-INF', 'web.xml').toString()
 
@@ -38,15 +37,15 @@ class ServletContextMakerTest {
         assertEquals(actualWebXml, expectedWebXml)
     }
 
-    @Test(expectedExceptions = NoSuchFieldException.class, expectedExceptionsMessageRegExp = 'web.xml doesn\'t exist in src/test/resources/example!!!')
-    void testFindWebXmlFailure(){
+    @Test(expectedExceptions = FileNotFoundException.class, expectedExceptionsMessageRegExp = 'web.xml doesn\'t exist in src/test/resources/example!!!')
+    void testFindWebXmlFailure() {
         def context = new ServletContext()
         ServletContextMaker contextMaker = new ServletContextMaker('example', context)
         contextMaker.findWebXml(new File('src/test/resources/example'))
     }
 
     @Test
-    void testInitializeServlets(){
+    void testInitializeServlets() {
         def dummyContext = new ServletContext()
         XMLServletReader xmlServletReader = new XMLServletReader()
         def servletDefinitions = xmlServletReader.getServlets('src/test/resources/tomcat-example-0.0.1/WEB-INF/web.xml')
@@ -54,14 +53,14 @@ class ServletContextMakerTest {
         def context = contextMaker.initializeServlets(servletDefinitions, new File('src/test/resources/tomcat-example-0.0.1/WEB-INF'))
         def servletHolder = context.getServletHolder()
 
-        for (Map.Entry<String, HttpServlet> servlet : servletHolder.entrySet()){
-            assertEquals(servlet.getKey(),'/example')
+        for (Map.Entry<String, HttpServlet> servlet : servletHolder.entrySet()) {
+            assertEquals(servlet.getKey(), '/example')
             assertTrue(servlet.getValue().getClass().getSuperclass() == HttpServlet.class)
         }
     }
 
     @Test
-    void testLoadLibs(){
+    void testLoadLibs() {
         def context = new ServletContext()
         def contextMaker = new ServletContextMaker('src/test/resources/tomcat-example-0.0.1/WEB-INF', context)
         contextMaker.loadLibs(new File('src/test/resources/tomcat-example-0.0.1/WEB-INF'))

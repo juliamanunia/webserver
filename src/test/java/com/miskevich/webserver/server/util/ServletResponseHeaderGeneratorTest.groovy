@@ -21,7 +21,7 @@ class ServletResponseHeaderGeneratorTest extends GroovyTestCase {
     }
 
     @Test(dataProvider = "provideResponseStaticResource", dataProviderClass = ResponseDataProvider.class)
-        void testGenerateHeadersForStaticResources(resource, expected) {
+    void testGenerateHeadersForStaticResources(resource, expected) {
         def staticResourceHeaders = ResponseHeaderGenerator.generateHeadersForStaticResources(resource, true)
         def staticResourceHeadersWithoutDate = staticResourceHeaders.substring(0, staticResourceHeaders.indexOf('Date'))
         staticResourceHeadersWithoutDate += staticResourceHeaders.substring(staticResourceHeaders.indexOf('GMT\n') + 4)

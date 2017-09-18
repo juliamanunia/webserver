@@ -1,7 +1,7 @@
 package com.miskevich.webserver.server
 
+import com.miskevich.webserver.data.servlet.IndexServlet
 import com.miskevich.webserver.server.util.ServletContext
-import com.miskevich.webserver.data.servlet.*
 import org.testng.annotations.Test
 
 class ServerITest {

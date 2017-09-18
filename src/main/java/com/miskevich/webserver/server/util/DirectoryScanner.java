@@ -13,11 +13,12 @@ import java.util.concurrent.TimeUnit;
 
 public class DirectoryScanner {
 
-    private WatchService watcher;
+    private final Logger LOG = LoggerFactory.getLogger(getClass());
     private static final String EXTENSION = "war";
+
+    private WatchService watcher;
     private ThreadPoolExecutor executor;
     private ServletContext context;
-    private static final Logger LOG = LoggerFactory.getLogger(DirectoryScanner.class);
 
     public DirectoryScanner(ServletContext context) {
         try {

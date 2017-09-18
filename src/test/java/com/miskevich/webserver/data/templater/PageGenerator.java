@@ -10,8 +10,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Map;
 
-public class PageGenerator
-{
+public class PageGenerator {
     private static final String HTML_DIR = "src/test/resources/webapp";
 
     private static PageGenerator pageGenerator;

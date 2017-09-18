@@ -1,6 +1,9 @@
 package com.miskevich.webserver.server;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class FileToBufferTest {
     public static void main(String[] args) throws IOException {
@@ -15,13 +18,13 @@ public class FileToBufferTest {
 
             byte[] buffer = new byte[1024 * 32];
             int length;
-            while ((length = inputStream.read(buffer)) != -1){
+            while ((length = inputStream.read(buffer)) != -1) {
                 System.out.println(length);
             }
 
             long end = System.currentTimeMillis() - start;
             total += end;
-            System.out.println( "Request took " + end + " ms");
+            System.out.println("Request took " + end + " ms");
         }
 
         System.out.println("Average: " + (total / ATTEMPTS));

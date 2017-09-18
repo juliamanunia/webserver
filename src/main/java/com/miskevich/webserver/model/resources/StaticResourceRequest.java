@@ -35,7 +35,7 @@ public class StaticResourceRequest {
         this.headers = headers;
     }
 
-    public void addHeader(String key, String value){
+    public void addHeader(String key, String value) {
         headers.put(key, value);
     }
 

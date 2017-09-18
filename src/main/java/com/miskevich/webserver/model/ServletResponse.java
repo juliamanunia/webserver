@@ -3,7 +3,10 @@ package com.miskevich.webserver.model;
 import com.miskevich.webserver.model.adapter.HttpServletResponseAdapter;
 import com.miskevich.webserver.model.common.HttpStatus;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 
 public class ServletResponse extends HttpServletResponseAdapter {
 
@@ -28,7 +31,8 @@ public class ServletResponse extends HttpServletResponseAdapter {
         return printWriter;
     }
 
-    public ByteArrayOutputStream getContent(){
+    public ByteArrayOutputStream getContent() {
+        printWriter.flush();
         return contentStream;
     }
 
@@ -60,5 +64,4 @@ public class ServletResponse extends HttpServletResponseAdapter {
     public void setContentLengthLong(long contentLength) {
         this.contentLength = contentLength;
     }
-
 }

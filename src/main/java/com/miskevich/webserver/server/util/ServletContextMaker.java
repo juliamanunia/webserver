@@ -2,38 +2,42 @@ package com.miskevich.webserver.server.util;
 
 import com.miskevich.webserver.model.ServletDefinition;
 import com.miskevich.webserver.server.util.reader.XMLServletReader;
-import jodd.util.ClassLoaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServlet;
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class ServletContextMaker implements Runnable {
 
     private static final Path FILE_LOCATION = Paths.get("src", "main", "webapp");
+    private final Logger LOG = LoggerFactory.getLogger(getClass());
+    private static final int BUFFER_SIZE = 8192;
+
     private final String CLASSES = "classes";
     private final String LIB = "lib";
-    private static final int BUFFER_SIZE = 1024;
     private String zipFileName;
     private File destinationDirectoryForUnzippedFile;
-    private static final Logger LOG = LoggerFactory.getLogger(ServletContextMaker.class);
     private ServletContext context;
 
     public ServletContextMaker(String zipFileName, ServletContext context) {
         this.zipFileName = zipFileName;
+        this.context = context;
+    }
+
+    public ServletContextMaker(ServletContext context) {
         this.context = context;
     }
 
@@ -71,11 +75,11 @@ public class ServletContextMaker implements Runnable {
     }
 
     private void extractFile(ZipInputStream zipInputStream, String destinationFilePath) {
-        try (BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(destinationFilePath))) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(destinationFilePath)) {
             byte[] buffer = new byte[BUFFER_SIZE];
             int read;
             while ((read = zipInputStream.read(buffer)) != -1) {
-                bufferedOutputStream.write(buffer, 0, read);
+                fileOutputStream.write(buffer, 0, read);
             }
         } catch (IOException e) {
             LOG.error(e.getMessage());
@@ -84,20 +88,24 @@ public class ServletContextMaker implements Runnable {
 
     }
 
-    String findWebXml(File webXmlDirectory) throws NoSuchFieldException {
+    String findWebXml(File webXmlDirectory) throws IOException {
         FilenameFilter filter = (dir, name) -> name.equals("web.xml");
         File[] listFiles = webXmlDirectory.listFiles(filter);
         if (listFiles != null && listFiles.length == 1) {
             return listFiles[0].toString();
+        }else if(listFiles == null){
+            LOG.error("web.xml doesn't exist in " + webXmlDirectory + "!!!");
+            throw new FileNotFoundException("web.xml doesn't exist in " + webXmlDirectory + "!!!");
         }
-        LOG.error("web.xml doesn't exist in " + webXmlDirectory + "!!!");
-        throw new NoSuchFieldException("web.xml doesn't exist in " + webXmlDirectory + "!!!");
+        LOG.error("More than 1 web.xml was found!!!");
+        throw new IOException("More than 1 web.xml was found!!!");
     }
 
     ServletContext initializeServlets(List<ServletDefinition> servletDefinitions, File webXmlDirectory) {
         for (ServletDefinition servletDefinition : servletDefinitions) {
+            System.out.println("servletDefinition: " + servletDefinition);
             try {
-                File classesDirectory = new File(Paths.get(webXmlDirectory.toString(), CLASSES).toString());
+                File classesDirectory = Paths.get(webXmlDirectory.getPath(), CLASSES).toFile();
                 URL[] urls = {classesDirectory.toURI().toURL()};
                 URLClassLoader classLoader = new URLClassLoader(urls);
                 Class<?> clazz = classLoader.loadClass(servletDefinition.getClassName());
@@ -114,53 +122,57 @@ public class ServletContextMaker implements Runnable {
         return context;
     }
 
-    void loadLibs(File webXmlDirectory) {
+//    void loadLibs(File webXmlDirectory) {
+//        File libDirectory = new File(Paths.get(webXmlDirectory.toString(), LIB).toString());
+//        try {
+//            URL[] urls = {libDirectory.toURI().toURL()};
+//            URLClassLoader classLoader = new URLClassLoader(urls);
+//            File[] jars = getJarsList(libDirectory);
+//            for (File jar : jars) {
+//                List<String> classes = getClassesList(jar);
+//                for (String className : classes) {
+//                    System.out.println("className: " + className);
+//                    classLoader.loadClass(className);
+//                }
+//            }
+//            LOG.info("Classes were loaded for libs, libDirectory: " + libDirectory);
+//            LOG.info("Class loader was configured");
+//        } catch (ClassNotFoundException | IOException e) {
+//            LOG.error("ERROR", e);
+//            throw new RuntimeException(e);
+//        }
+//    }
+
+    void loadLibsA(File webXmlDirectory){
         File libDirectory = new File(Paths.get(webXmlDirectory.toString(), LIB).toString());
-        try {
-            URL[] urls = {libDirectory.toURI().toURL()};
-            URLClassLoader classLoader = new URLClassLoader(urls);
-            File[] jars = getJarsList(libDirectory);
-            for (File jar : jars) {
-                //System.out.println(jar);
-                List<String> classes = getClassesList(jar);
-                for (String clazz : classes) {
-                    //System.out.println(clazz);
-                    classLoader.loadClass(clazz);
+        File[] jars = getJarsList(libDirectory);
+        for (File jar : jars){
+            try {
+                JarFile jarFile = new JarFile(jar);
+                Enumeration<JarEntry> jarEntryEnumeration = jarFile.entries();
+                URL[] urls = {new URL("jar:file:" + jar + "!/")};
+                URLClassLoader urlClassLoader = URLClassLoader.newInstance(urls);
+
+                while (jarEntryEnumeration.hasMoreElements()){
+                    JarEntry jarEntry = jarEntryEnumeration.nextElement();
+                    if(jarEntry.isDirectory() || !jarEntry.getName().endsWith(".class")){
+                        continue;
+                    }
+                    String className = jarEntry.getName().substring(0, jarEntry.getName().length() - 6);
+                    className = className.replace('/', '.');
+                    System.out.println("Loading className: " + className);
+                    urlClassLoader.loadClass(className);
                 }
+
+            } catch (IOException | ClassNotFoundException e) {
+                LOG.error("ERROR", e);
+                throw new RuntimeException(e);
             }
-            LOG.info("Classes were loaded for libs, libDirectory: " + libDirectory);
-            //classLoader.getResources("src/main/webapp/example1");
-
-//            ClassLoader currentThreadClassLoader = Thread.currentThread().getContextClassLoader();
-//            URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{new File("src/main/webapp/example1").toURL()}, currentThreadClassLoader);
-//            Thread.currentThread().setContextClassLoader(urlClassLoader);
-
-            addPath("src/main/webapp/example1");
-            //URLClassLoader.newInstance(new URL[] {new URL("file:/src/main/webapp/example1/example")});
-
-//            String addonClasspath = "src/main/webapp/example1";
-//            ClassLoaderUtil.addFileToClassPath(new File(addonClasspath), classLoader);
-            LOG.info("Class loader was configured");
-        } catch (ClassNotFoundException | IOException e) {
-            LOG.error(e.getMessage());
-            throw new RuntimeException(e);
+            LOG.info("Finished for JAR: " + jar);
         }
+        LOG.info("Classes were loaded for libs, libDirectory: " + libDirectory);
     }
 
-    private void addPath(String s) {
-        File f = new File(s);
-        URI u = f.toURI();
-        URLClassLoader urlClassLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
-        Class<URLClassLoader> urlClass = URLClassLoader.class;
-        Method method;
-        try {
-            method = urlClass.getDeclaredMethod("addURL", URL.class);
-            method.setAccessible(true);
-            method.invoke(urlClassLoader, u.toURL());
-        } catch (NoSuchMethodException | MalformedURLException | IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     private File[] getJarsList(File libDirectory) {
         FilenameFilter filter = (dir, name) -> name.endsWith(".jar");
@@ -187,18 +199,27 @@ public class ServletContextMaker implements Runnable {
     public void run() {
         File webXmlDirectory = generateDirectoryNames(zipFileName);
         unzip();
+        initializeContext(webXmlDirectory);
+    }
 
+    public void initializeExistingContext(){
+        //TODO: find all not war dirs, for each dir : dirs
+
+        File webXmlDirectory = Paths.get("dir", "WEB-INF").toFile();
+        initializeContext(webXmlDirectory);
+    }
+
+    private void initializeContext(File webXmlDirectory){
         String webXml;
         try {
             webXml = findWebXml(webXmlDirectory);
-        } catch (NoSuchFieldException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         XMLServletReader xmlServletReader = new XMLServletReader();
         List<ServletDefinition> servletDefinitions = xmlServletReader.getServlets(webXml);
+        loadLibsA(webXmlDirectory);
         initializeServlets(servletDefinitions, webXmlDirectory);
-        loadLibs(webXmlDirectory);
-
     }
 }

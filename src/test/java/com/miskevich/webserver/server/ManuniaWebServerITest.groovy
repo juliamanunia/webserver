@@ -7,7 +7,7 @@ import org.testng.annotations.Test
 class ManuniaWebServerITest {
 
     @Test
-    void runServer(){
+    void runServer() {
         def context = new ServletContext()
         DirectoryScanner directoryScanner = new DirectoryScanner(context)
         while (true) {

@@ -11,28 +11,23 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.*;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class Server implements Runnable {
+
+    private final Logger LOG = LoggerFactory.getLogger(getClass());
 
     private int port;
     private ResourceReader resourceReader;
     private ServletContext servletContext;
-    private ThreadPoolExecutor poolExecutor =  new ThreadPoolExecutor(5, 20,
+    private ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(5, 20,
             60L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>());
-    private static final Logger LOG = LoggerFactory.getLogger(Server.class);
 
     public Server(int port) {
         this.port = port;
-    }
-
-    public void setResourcePath(String path) {
-        resourceReader = new ResourceReader(path);
-    }
-
-    public void setServletContext(ServletContext servletContext) {
-        this.servletContext = servletContext;
     }
 
     public void run() {
@@ -46,8 +41,16 @@ public class Server implements Runnable {
                 poolExecutor.execute(requestHandler);
             }
         } catch (IOException e) {
-            LOG.error(e.getMessage());
+            LOG.error("Error: ", e);
         }
+    }
+
+    public void setResourcePath(String path) {
+        resourceReader = new ResourceReader(path);
+    }
+
+    public void setServletContext(ServletContext servletContext) {
+        this.servletContext = servletContext;
     }
 }
 

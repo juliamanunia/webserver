@@ -34,7 +34,7 @@ public enum HttpStatus {
 
     public static HttpStatus getStatusByCode(int statusCode) {
         for (HttpStatus httpStatus : values()) {
-            if(httpStatus.statusCode == statusCode){
+            if (httpStatus.statusCode == statusCode) {
                 return httpStatus;
             }
         }

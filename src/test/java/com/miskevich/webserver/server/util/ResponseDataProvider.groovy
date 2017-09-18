@@ -1,13 +1,12 @@
 package com.miskevich.webserver.server.util
 
-import com.miskevich.webserver.model.resources.Resource
 import com.miskevich.webserver.model.ServletResponse
+import com.miskevich.webserver.model.resources.Resource
 import org.testng.annotations.DataProvider
-
 
 class ResponseDataProvider {
 
-    @DataProvider (name = "provideResponseNotNull")
+    @DataProvider(name = "provideResponseNotNull")
     static Object[][] provideResponseNotNull() {
 
         def response = new ServletResponse()
@@ -36,7 +35,7 @@ class ResponseDataProvider {
         return array
     }
 
-    @DataProvider (name = "provideResponseNull")
+    @DataProvider(name = "provideResponseNull")
     static Object[][] provideResponseNull() {
 
         def response = new ServletResponse()
@@ -58,7 +57,7 @@ class ResponseDataProvider {
         return array
     }
 
-    @DataProvider (name = "provideResponseStaticResource")
+    @DataProvider(name = "provideResponseStaticResource")
     static Object[][] provideResponseStaticResource() {
 
         def resource = new Resource()

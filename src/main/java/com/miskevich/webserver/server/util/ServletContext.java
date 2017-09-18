@@ -9,19 +9,19 @@ import java.util.Map;
 
 public class ServletContext {
 
+    private final Logger LOG = LoggerFactory.getLogger(getClass());
     private Map<String, HttpServlet> servletHolder;
-    private static final Logger LOG = LoggerFactory.getLogger(ServletContext.class);
 
     public ServletContext() {
         this.servletHolder = new HashMap<>();
     }
 
-    public void addServlet(String path, HttpServlet servlet){
+    public void addServlet(String path, HttpServlet servlet) {
         servletHolder.put(path, servlet);
         LOG.info("Servlet " + servlet + " was registered by path " + path);
     }
 
-    public HttpServlet getServlet(String path){
+    public HttpServlet getServlet(String path) {
         return servletHolder.get(path);
     }
 

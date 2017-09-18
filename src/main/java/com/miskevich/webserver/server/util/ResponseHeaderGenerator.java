@@ -1,7 +1,7 @@
 package com.miskevich.webserver.server.util;
 
-import com.miskevich.webserver.model.resources.Resource;
 import com.miskevich.webserver.model.ServletResponse;
+import com.miskevich.webserver.model.resources.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,17 +15,17 @@ public class ResponseHeaderGenerator {
     private static final String OK = "HTTP/1.1 200 OK";
     private static final String NOT_FOUND = "HTTP/1.1 404 Not found";
 
-    public static String generateHeadersForServlet(ServletResponse servletResponse, boolean error){
+    public static String generateHeadersForServlet(ServletResponse servletResponse, boolean error) {
         StringBuilder responseHeaders = new StringBuilder(error ? NOT_FOUND : OK);
         responseHeaders.append("\n");
 
-        if(null != servletResponse.getContentType()){
+        if (null != servletResponse.getContentType()) {
             responseHeaders
                     .append("Content-Type: ")
                     .append(servletResponse.getContentType())
                     .append("\n");
         }
-        if(servletResponse.getContentLengthLong() > 0){
+        if (servletResponse.getContentLengthLong() > 0) {
             responseHeaders
                     .append("Content-Length: ")
                     .append(servletResponse.getContentLengthLong())
@@ -60,7 +60,7 @@ public class ResponseHeaderGenerator {
                 .append("\n");
     }
 
-    private static void injectStandardHeaders(StringBuilder responseHeaders){
+    private static void injectStandardHeaders(StringBuilder responseHeaders) {
         responseHeaders
                 .append("Date: ")
                 .append(DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT"))))

@@ -3,12 +3,13 @@ package com.miskevich.webserver.server.util
 import com.miskevich.webserver.model.resources.StaticResourceRequest
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
-import static org.testng.Assert.*
+
+import static org.testng.Assert.assertEquals
 
 
 class ServletRequestParserTest extends GroovyTestCase {
 
-    @DataProvider (name = "provideRequest")
+    @DataProvider(name = "provideRequest")
     Object[][] provideRequest() {
         def headersUrlMethod = new StringBuilder()
         headersUrlMethod.append("GET /index.html HTTP/1.1\n")
@@ -23,15 +24,15 @@ class ServletRequestParserTest extends GroovyTestCase {
                 .append("Cookie: JSESSIONID=dskfw774f9ovjz1isafe83cr; io=oV8FgNcgYFEpWDc5AAB4\n")
                 .append("\n")
 
-        def headersMap = [Host : ' localhost',
-                          Connection : ' keep-alive',
-                          'Cache-Control' : ' max-age=0',
-                          'Upgrade-Insecure-Requests' : ' 1',
-                          'User-Agent' : ' Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
-                          Accept : ' text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-                          'Accept-Encoding' : ' gzip, deflate, sdch, br',
-                          'Accept-Language' : ' ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
-                          Cookie : ' JSESSIONID=dskfw774f9ovjz1isafe83cr; io=oV8FgNcgYFEpWDc5AAB4'
+        def headersMap = [Host                       : ' localhost',
+                          Connection                 : ' keep-alive',
+                          'Cache-Control'            : ' max-age=0',
+                          'Upgrade-Insecure-Requests': ' 1',
+                          'User-Agent'               : ' Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
+                          Accept                     : ' text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                          'Accept-Encoding'          : ' gzip, deflate, sdch, br',
+                          'Accept-Language'          : ' ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
+                          Cookie                     : ' JSESSIONID=dskfw774f9ovjz1isafe83cr; io=oV8FgNcgYFEpWDc5AAB4'
         ]
 
         def expectedRequest = new StaticResourceRequest(url: '/index.html', method: 'GET', headers: headersMap)
