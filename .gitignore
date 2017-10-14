@@ -3,5 +3,6 @@
 *.idea
 *.iml
 
-src/test/java/com/miskevich/webserver/server/util/Test.java
 target/
+/nohup.out
+*.log

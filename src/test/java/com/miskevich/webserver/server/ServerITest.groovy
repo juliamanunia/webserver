@@ -13,10 +13,10 @@ class ServerITest {
         ServletContext context = new ServletContext()
         context.addServlet("/index/all", indexServlet)
 
-        Server threadPooledServer = new Server(3000)
-        threadPooledServer.setResourcePath("src/test/resources/webapp")
-        threadPooledServer.setServletContext(context)
-        threadPooledServer.run()
+        Server server = new Server(3000)
+        server.setResourcePath("src/test/resources/webapp")
+        server.setServletContext(context)
+        server.run()
     }
 
 }

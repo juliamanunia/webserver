@@ -18,6 +18,8 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RequestHandler implements Runnable {
 
@@ -43,25 +45,71 @@ public class RequestHandler implements Runnable {
 
             ServletResponse servletResponse = new ServletResponse();
             String fullUrlFromRequest = staticResourceRequest.getUrl();
-            int secondIndexOfSlash = fullUrlFromRequest.indexOf("/", fullUrlFromRequest.indexOf("/") + 1);
 
-            HttpServlet servlet = null;
-            if(secondIndexOfSlash > 0){
-                String servletUrl = fullUrlFromRequest.substring(secondIndexOfSlash);
-                servlet = servletContext.getServlet(servletUrl);
-                //HttpServlet servlet = servletContext.getServlet(staticResourceRequest.getUrl());
-                LOG.info("Found servlet: " + servletUrl);
-            }
+
+            //int secondIndexOfSlash = fullUrlFromRequest.indexOf("/", fullUrlFromRequest.indexOf("/") + 1);
+
+            //HttpServlet servlet = null;
+//            if(secondIndexOfSlash > 0){
+//                String servletUrl = fullUrlFromRequest.substring(secondIndexOfSlash);
+//                servlet = servletContext.getServlet(servletUrl);
+//                //HttpServlet servlet = servletContext.getServlet(staticResourceRequest.getUrl());
+//                LOG.info("Found servlet: " + servletUrl);
+//            }
+
+            String urlForServlet = modifyURLIfParametersExist(fullUrlFromRequest, servletRequest);
+
+            HttpServlet servlet = servletContext.getServlet(urlForServlet);
 
             if (servlet != null) {
+                LOG.info("Found servlet: " + urlForServlet);
                 processServlet(writer, servletRequest, servletResponse, servlet);
             } else {
+                String url = staticResourceRequest.getUrl();
+//                if (url.equals("/")) {
+//                    url = "/movieland/index.html";
+//                } else {
+//                    url = "/movieland" + url;
+//                }
+                if(url.matches("/.*/")){
+                    url = "/movieland/index.html";
+                }
+                LOG.info("URL for static resource: " + url);
+                staticResourceRequest.setUrl(url);
                 loadStaticResources(writer, staticResourceRequest);
             }
         } catch (IOException | ServletException e) {
             LOG.warn(e.getMessage());
             throw new RuntimeException(e);
         }
+    }
+
+    String modifyURLIfParametersExist(String fullUrlFromRequest, ServletRequest servletRequest) {
+        if (fullUrlFromRequest.contains("?")) {
+            int indexOfParameters = fullUrlFromRequest.indexOf("?");
+            String urlWithoutParameters = fullUrlFromRequest.substring(0, indexOfParameters);
+            LOG.info("UrlWithoutParameters: " + urlWithoutParameters);
+
+            Map<String, String[]> requestParameters = getRequestParameters(fullUrlFromRequest, indexOfParameters);
+
+            for (Map.Entry<String, String[]> parameter : requestParameters.entrySet()) {
+                servletRequest.addParameter(parameter.getKey(), parameter.getValue());
+            }
+            return urlWithoutParameters;
+        }
+        return fullUrlFromRequest;
+    }
+
+    Map<String, String[]> getRequestParameters(String fullUrlFromRequest, int indexOfParameters) {
+        Map<String, String[]> parameterMap = new HashMap<>();
+        String parameters = fullUrlFromRequest.substring(indexOfParameters + 1);
+        String[] splittedParameters = parameters.split("&");
+
+        for (String parameter : splittedParameters) {
+            String[] paramAndValue = parameter.split("=");
+            parameterMap.put(paramAndValue[0], new String[]{paramAndValue[1]});
+        }
+        return parameterMap;
     }
 
     private void processServlet(BufferedOutputStream socketOutputStream, ServletRequest servletRequest,
@@ -104,7 +152,7 @@ public class RequestHandler implements Runnable {
                 writer.write(ResponseHeaderGenerator.generateHeadersForStaticResources(resource, true).getBytes());
             }
         } catch (IOException e) {
-            LOG.error("ERROR", e);
+            LOG.error("ERROR: ", e);
             throw new RuntimeException(e);
         }
     }

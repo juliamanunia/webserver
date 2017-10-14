@@ -26,6 +26,7 @@ public class RequestParser {
     }
 
     private static void injectUrlAndMethod(StaticResourceRequest staticResourceRequest, String line) {
+        System.out.println("line: " + line);
         String[] methodAndUrl = line.split(" ");
         staticResourceRequest.setMethod(HttpMethod.getMethodById(methodAndUrl[0]));
         staticResourceRequest.setUrl(methodAndUrl[1]);
@@ -39,4 +40,7 @@ public class RequestParser {
         }
     }
 
+    private static void injectBody(){
+        //TODO: POST, PUT, DELETE --> read empty string and then parameters
+    }
 }

@@ -15,7 +15,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class Server implements Runnable {
+class Server implements Runnable {
 
     private final Logger LOG = LoggerFactory.getLogger(getClass());
 

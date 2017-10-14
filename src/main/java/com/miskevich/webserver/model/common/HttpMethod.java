@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public enum HttpMethod {
 
-    GET("GET");
+    GET("GET"), POST("POST");
 
     private String method;
     private static final Logger LOG = LoggerFactory.getLogger(HttpMethod.class);

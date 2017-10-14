@@ -7,11 +7,19 @@ import com.miskevich.webserver.server.util.ServletContextMaker;
 
 public class ManuniaWebServer {
 
-    public static void main(String[] args) throws InterruptedException {
-        ServletContext context = new ServletContext();
-        DirectoryScanner directoryScanner = new DirectoryScanner(context);
+    private String webappPath;
+    private int port;
 
-        Thread serverThread = new Thread(new ServerWorker(context));
+    public ManuniaWebServer(String webappPath, int port) {
+        this.webappPath = webappPath;
+        this.port = port;
+    }
+
+    public void start() throws InterruptedException {
+        ServletContext context = new ServletContext();
+        DirectoryScanner directoryScanner = new DirectoryScanner(context, webappPath);
+
+        Thread serverThread = new Thread(new ServerWorker(webappPath, port, context));
         Thread scannerThread = new Thread(new ScanWorker(directoryScanner));
 
         serverThread.start();
@@ -29,6 +37,7 @@ public class ManuniaWebServer {
         }
 
         public void run() {
+            directoryScanner.scanExistingWebapps();
             while (true) {
                 directoryScanner.scanDirectoryForNewWars();
             }
@@ -36,15 +45,20 @@ public class ManuniaWebServer {
     }
 
     private static class ServerWorker implements Runnable {
+
+        private String webappPath;
+        private int port;
         private ServletContext context;
 
-        ServerWorker(ServletContext context) {
+        public ServerWorker(String webappPath, int port, ServletContext context) {
+            this.webappPath = webappPath;
+            this.port = port;
             this.context = context;
         }
 
         public void run() {
-            Server server = new Server(3000);
-            server.setResourcePath("src/main/webapp");
+            Server server = new Server(port);
+            server.setResourcePath(webappPath);
             server.setServletContext(context);
             server.run();
         }
