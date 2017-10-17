@@ -14,10 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,12 +23,14 @@ public class RequestHandler implements Runnable {
     private final Logger LOG = LoggerFactory.getLogger(getClass());
 
     private BufferedReader reader;
+    InputStream inputStream;
     private BufferedOutputStream writer;
     private ResourceReader resourceReader;
     private ServletContext servletContext;
 
-    public RequestHandler(BufferedReader reader, BufferedOutputStream writer, ResourceReader resourceReader, ServletContext servletContext) {
+    public RequestHandler(BufferedReader reader, InputStream inputStream, BufferedOutputStream writer, ResourceReader resourceReader, ServletContext servletContext) {
         this.reader = reader;
+        this.inputStream = inputStream;
         this.writer = writer;
         this.resourceReader = resourceReader;
         this.servletContext = servletContext;
@@ -39,23 +38,12 @@ public class RequestHandler implements Runnable {
 
     public void handle() {
         try (BufferedOutputStream writer = this.writer) {
-            StaticResourceRequest staticResourceRequest = RequestParser.toRequest(reader);
             ServletRequest servletRequest = new ServletRequest();
+            StaticResourceRequest staticResourceRequest = RequestParser.toRequest(reader, inputStream, servletRequest);
             servletRequest.setMethod(staticResourceRequest.getMethod());
 
             ServletResponse servletResponse = new ServletResponse();
             String fullUrlFromRequest = staticResourceRequest.getUrl();
-
-
-            //int secondIndexOfSlash = fullUrlFromRequest.indexOf("/", fullUrlFromRequest.indexOf("/") + 1);
-
-            //HttpServlet servlet = null;
-//            if(secondIndexOfSlash > 0){
-//                String servletUrl = fullUrlFromRequest.substring(secondIndexOfSlash);
-//                servlet = servletContext.getServlet(servletUrl);
-//                //HttpServlet servlet = servletContext.getServlet(staticResourceRequest.getUrl());
-//                LOG.info("Found servlet: " + servletUrl);
-//            }
 
             String urlForServlet = modifyURLIfParametersExist(fullUrlFromRequest, servletRequest);
 
@@ -66,16 +54,12 @@ public class RequestHandler implements Runnable {
                 processServlet(writer, servletRequest, servletResponse, servlet);
             } else {
                 String url = staticResourceRequest.getUrl();
-//                if (url.equals("/")) {
-//                    url = "/movieland/index.html";
-//                } else {
-//                    url = "/movieland" + url;
-//                }
                 if(url.matches("/.*/")){
+                    //TODO
                     url = "/movieland/index.html";
+                    staticResourceRequest.setUrl(url);
                 }
                 LOG.info("URL for static resource: " + url);
-                staticResourceRequest.setUrl(url);
                 loadStaticResources(writer, staticResourceRequest);
             }
         } catch (IOException | ServletException e) {

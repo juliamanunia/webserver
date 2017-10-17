@@ -5,10 +5,7 @@ import com.miskevich.webserver.server.util.ServletContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -35,9 +32,10 @@ class Server implements Runnable {
             ServerSocket serverSocket = new ServerSocket(port);
             while (true) {
                 Socket socket = serverSocket.accept();
+                InputStream inputStream = socket.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 BufferedOutputStream writer = new BufferedOutputStream(socket.getOutputStream());
-                RequestHandler requestHandler = new RequestHandler(reader, writer, resourceReader, servletContext);
+                RequestHandler requestHandler = new RequestHandler(reader, inputStream, writer, resourceReader, servletContext);
                 poolExecutor.execute(requestHandler);
             }
         } catch (IOException e) {
