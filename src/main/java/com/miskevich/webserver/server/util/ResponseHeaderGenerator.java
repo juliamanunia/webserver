@@ -57,6 +57,9 @@ public class ResponseHeaderGenerator {
                 .append("\n")
                 .append("Content-Length: ")
                 .append(resource.getContentLength())
+                .append("\n")
+                .append("Cache-Control: ")
+                .append("max-age=3600")
                 .append("\n");
     }
 
@@ -67,9 +70,6 @@ public class ResponseHeaderGenerator {
                 .append("\n")
                 .append("Server: ")
                 .append("Miskevich/0.0.1")
-                .append("\n")
-                .append("Cache-Control: ")
-                .append("max-age=3600")
                 .append("\n");
     }
 }

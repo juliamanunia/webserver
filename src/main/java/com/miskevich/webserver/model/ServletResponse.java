@@ -31,7 +31,8 @@ public class ServletResponse extends HttpServletResponseAdapter {
         return printWriter;
     }
 
-    public ByteArrayOutputStream getContent() {
+    public ByteArrayOutputStream getContent() throws IOException {
+        getWriter();
         printWriter.flush();
         return contentStream;
     }

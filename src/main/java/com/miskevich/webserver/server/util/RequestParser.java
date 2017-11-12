@@ -18,7 +18,7 @@ public class RequestParser {
             injectUrlAndMethod(staticResourceRequest, reader.readLine());
             injectHeaders(staticResourceRequest, reader);
             LOG.info("Parsed request " + staticResourceRequest);
-            if (staticResourceRequest.getMethod().equals(HttpMethod.POST)) {
+            if (!staticResourceRequest.getMethod().equals(HttpMethod.GET)) {
                 //int contentLength = Integer.valueOf(staticResourceRequest.getHeaders().get("Content-Length").trim());
                 //char[] body = new char[contentLength * 5];
                 //reader.read(body, 0, contentLength);
