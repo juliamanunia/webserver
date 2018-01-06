@@ -49,11 +49,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
-                <configuration>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                </configuration>
             </plugin>
 
             <plugin>
@@ -69,10 +64,14 @@
                             <providerSelection>2.0</providerSelection>
                             <testSources>
                                 <testSource>
-                                    <directory>./src/test/java</directory>
+                                    <directory>${basedir}/src/test/java</directory>
                                     <includes>
                                         <include>**/*.groovy</include>
                                     </includes>
+                                    <excludes>
+                                        <exclude>**/*ITest.groovy</exclude>
+                                        <exclude>**/*PTest.groovy</exclude>
+                                    </excludes>
                                 </testSource>
                             </testSources>
                         </configuration>

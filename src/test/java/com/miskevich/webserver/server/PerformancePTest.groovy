@@ -1,7 +1,10 @@
 package com.miskevich.webserver.server
 
-class PerformanceTest extends GroovyTestCase {
+import org.testng.annotations.Test
 
+class PerformancePTest {
+
+    @Test
     void testPerformanceForResourceLoading() {
 
         final int ATTEMPTS = 20

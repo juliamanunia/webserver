@@ -50,7 +50,7 @@ public class ManuniaWebServer {
         private int port;
         private ServletContext context;
 
-        public ServerWorker(String webappPath, int port, ServletContext context) {
+        ServerWorker(String webappPath, int port, ServletContext context) {
             this.webappPath = webappPath;
             this.port = port;
             this.context = context;

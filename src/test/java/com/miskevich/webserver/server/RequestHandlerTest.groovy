@@ -13,7 +13,7 @@ class RequestHandlerTest {
 
     @BeforeTest
     void initializeRequestHandler(){
-        requestHandler = new RequestHandler(Mockito.mock(BufferedReader.class),
+        requestHandler = new RequestHandler(Mockito.mock(BufferedReader.class), Mockito.mock(InputStream.class),
                 Mockito.mock(BufferedOutputStream.class), Mockito.mock(ResourceReader.class), new ServletContext())
     }
 

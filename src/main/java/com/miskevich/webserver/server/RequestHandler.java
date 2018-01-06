@@ -28,7 +28,8 @@ public class RequestHandler implements Runnable {
     private ResourceReader resourceReader;
     private ServletContext servletContext;
 
-    public RequestHandler(BufferedReader reader, InputStream inputStream, BufferedOutputStream writer, ResourceReader resourceReader, ServletContext servletContext) {
+    public RequestHandler(BufferedReader reader, InputStream inputStream,
+                          BufferedOutputStream writer, ResourceReader resourceReader, ServletContext servletContext) {
         this.reader = reader;
         this.inputStream = inputStream;
         this.writer = writer;

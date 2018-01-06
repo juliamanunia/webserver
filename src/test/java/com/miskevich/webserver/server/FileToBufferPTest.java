@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class FileToBufferTest {
+public class FileToBufferPTest {
     public static void main(String[] args) throws IOException {
 
         final int ATTEMPTS = 21;

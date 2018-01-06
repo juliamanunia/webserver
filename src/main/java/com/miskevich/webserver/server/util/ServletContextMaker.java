@@ -39,7 +39,7 @@ public class ServletContextMaker implements Runnable {
         this.context = context;
     }
 
-    private File generateDirectoryNames(String zipFileName) {
+    File generateDirectoryNames(String zipFileName) {
         String extension = zipFileName.substring(zipFileName.lastIndexOf('.'));
         destinationDirectoryForUnzippedFile = new File(zipFileName.substring(0, zipFileName.length() - extension.length()));
         String unzippedFileAbsolutePath = destinationDirectoryForUnzippedFile.getAbsolutePath();
