@@ -2,12 +2,9 @@
 *.idea
 *.iml
 
-*.war
-
 
 target/
 /nohup.out
 *.log
 /src/main/webapp/
-/src/test/resources/tomcat-example-0.0.1/
 /src/test/resources/old_wars/
