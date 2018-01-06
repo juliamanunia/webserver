@@ -10,6 +10,7 @@ import static org.testng.Assert.assertEquals
 import static org.testng.Assert.assertTrue
 
 class ServletContextMakerTest {
+    //Comment which should be removed
 
     @Test
     void testUnzipAndFindWebXml() {
