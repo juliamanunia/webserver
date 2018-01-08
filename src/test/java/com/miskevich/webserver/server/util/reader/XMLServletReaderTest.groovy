@@ -10,7 +10,7 @@ class XMLServletReaderTest {
     @Test(dataProvider = 'provideWevXmlDefinitions', dataProviderClass = WebXmlDefinitionsProvider.class)
     void testGetServlets(def expectedServletDefinitions) {
         XMLServletReader xmlServletReader = new XMLServletReader()
-        def actualServletDefinitions = xmlServletReader.getServlets('src/test/resources/web.xml')
+        def actualServletDefinitions = xmlServletReader.getServlets(new File('src/test/resources/web.xml'))
         assertEquals(actualServletDefinitions, expectedServletDefinitions)
     }
 }

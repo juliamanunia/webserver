@@ -18,20 +18,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.miskevich.webserver.model.common.WebXmlTags.*;
+
 public class XMLServletReader implements ServletReader {
 
-    private static final Logger LOG = LoggerFactory.getLogger(XMLServletReader.class);
+    private final Logger LOG = LoggerFactory.getLogger(getClass());
 
-    public List<ServletDefinition> getServlets(String path) {
+    public List<ServletDefinition> getServlets(File webXmlPath) {
         List<ServletDefinition> servletDefinitions = new ArrayList<>();
 
         try {
-            File inputFile = new File(path);
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document document = documentBuilder.parse(inputFile);
+            Document document = documentBuilder.parse(webXmlPath);
             document.getDocumentElement().normalize();
-            NodeList servlet = document.getElementsByTagName("servlet");
+            NodeList servlet = document.getElementsByTagName(SERVLET.getTagName());
 
             for (int i = 0; i < servlet.getLength(); i++) {
                 Node servletNode = servlet.item(i);
@@ -50,21 +51,21 @@ public class XMLServletReader implements ServletReader {
         ServletDefinition servletDefinition = new ServletDefinition();
         if (servletNode.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) servletNode;
-            servletName = element.getElementsByTagName("servlet-name").item(0).getTextContent();
-            String servletClass = element.getElementsByTagName("servlet-class").item(0).getTextContent();
+            servletName = element.getElementsByTagName(SERVLET_NAME.getTagName()).item(0).getTextContent();
+            String servletClass = element.getElementsByTagName(SERVLET_CLASS.getTagName()).item(0).getTextContent();
             servletDefinition.setName(servletName);
             servletDefinition.setClassName(servletClass);
         }
 
-        NodeList servletMapping = document.getElementsByTagName("servlet-mapping");
+        NodeList servletMapping = document.getElementsByTagName(SERVLET_MAPPING.getTagName());
         List<String> urls = new ArrayList<>();
         for (int j = 0; j < servletMapping.getLength(); j++) {
             Node servletMappingNode = servletMapping.item(j);
             if (servletMappingNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) servletMappingNode;
-                String mappingName = element.getElementsByTagName("servlet-name").item(0).getTextContent();
+                String mappingName = element.getElementsByTagName(SERVLET_NAME.getTagName()).item(0).getTextContent();
                 if (servletName.equals(mappingName)) {
-                    String servletUrl = element.getElementsByTagName("url-pattern").item(0).getTextContent();
+                    String servletUrl = element.getElementsByTagName(URL_PATTERN.getTagName()).item(0).getTextContent();
                     urls.add(servletUrl);
                 }
             }

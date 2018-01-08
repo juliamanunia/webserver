@@ -3,7 +3,6 @@ package com.miskevich.webserver.server;
 
 import com.miskevich.webserver.server.util.DirectoryScanner;
 import com.miskevich.webserver.server.util.ServletContext;
-import com.miskevich.webserver.server.util.ServletContextMaker;
 
 public class ManuniaWebServer {
 
@@ -24,9 +23,6 @@ public class ManuniaWebServer {
 
         serverThread.start();
         scannerThread.start();
-        // TODO: run existing webapps after start of container
-        //ServletContextMaker alreadyUnzippedContext = new ServletContextMaker(context);
-        //alreadyUnzippedContext.initializeExistingContext();
     }
 
     private static class ScanWorker implements Runnable {

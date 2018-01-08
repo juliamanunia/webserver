@@ -2,12 +2,9 @@ package com.miskevich.webserver.model;
 
 import com.miskevich.webserver.model.adapter.HttpServletRequestAdapter;
 import com.miskevich.webserver.model.common.HttpMethod;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,16 +49,3 @@ public class ServletRequest extends HttpServletRequestAdapter {
 
 }
 
-class ProxyBufferedReader extends BufferedReader{
-
-    private final Logger LOG = LoggerFactory.getLogger(getClass());
-
-    public ProxyBufferedReader(Reader in) {
-        super(in);
-    }
-
-    @Override
-    public void close() throws IOException {
-        LOG.info("Socket was closed from outside");
-    }
-}

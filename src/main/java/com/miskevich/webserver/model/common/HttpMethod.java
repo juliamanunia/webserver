@@ -7,8 +7,8 @@ public enum HttpMethod {
 
     GET("GET"), POST("POST"), PUT("PUT"), DELETE("DELETE");
 
-    private String method;
     private static final Logger LOG = LoggerFactory.getLogger(HttpMethod.class);
+    private String method;
 
     HttpMethod(String method) {
         this.method = method;

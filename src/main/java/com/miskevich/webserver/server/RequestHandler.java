@@ -23,7 +23,7 @@ public class RequestHandler implements Runnable {
     private final Logger LOG = LoggerFactory.getLogger(getClass());
 
     private BufferedReader reader;
-    InputStream inputStream;
+    private InputStream inputStream;
     private BufferedOutputStream writer;
     private ResourceReader resourceReader;
     private ServletContext servletContext;
@@ -55,7 +55,7 @@ public class RequestHandler implements Runnable {
                 processServlet(writer, servletRequest, servletResponse, servlet);
             } else {
                 String url = staticResourceRequest.getUrl();
-                if(url.matches("/.*/")){
+                if (url.matches("/.*/")) {
                     //TODO
                     url = "/movieland/index.html";
                     staticResourceRequest.setUrl(url);

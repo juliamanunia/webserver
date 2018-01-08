@@ -1,5 +1,6 @@
 package com.miskevich.webserver.server.util;
 
+import com.miskevich.webserver.exception.WebXmlFileException;
 import com.miskevich.webserver.model.ServletDefinition;
 import com.miskevich.webserver.server.util.reader.XMLServletReader;
 import org.apache.commons.io.FileUtils;
@@ -11,8 +12,6 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -20,14 +19,14 @@ import java.util.zip.ZipInputStream;
 
 public class ServletContextMaker implements Runnable {
 
-    private final Logger LOG = LoggerFactory.getLogger(getClass());
     private static final int BUFFER_SIZE = 8192;
     private static final String CLASSES = "classes";
     private static final String LIB = "lib";
+    private final Logger LOG = LoggerFactory.getLogger(getClass());
 
     private String zipFileName;
     private String applicationName;
-    private File destinationDirectoryForUnzippedFile;
+    private File webXmlPath;
     private ServletContext context;
 
     public ServletContextMaker(String zipFileName, ServletContext context) {
@@ -39,26 +38,29 @@ public class ServletContextMaker implements Runnable {
         this.context = context;
     }
 
-    File generateDirectoryNames(String zipFileName) {
+    File generateDirectoryNameForUnzippedFile(String zipFileName) {
         String extension = zipFileName.substring(zipFileName.lastIndexOf('.'));
-        destinationDirectoryForUnzippedFile = new File(zipFileName.substring(0, zipFileName.length() - extension.length()));
+        return new File(zipFileName.substring(0, zipFileName.length() - extension.length()));
+    }
+
+    File generateDirectoryNameForWebXml(File destinationDirectoryForUnzippedFile) {
         String unzippedFileAbsolutePath = destinationDirectoryForUnzippedFile.getAbsolutePath();
         applicationName = unzippedFileAbsolutePath.substring(unzippedFileAbsolutePath.lastIndexOf("/"));
         return Paths.get(unzippedFileAbsolutePath, "WEB-INF").toFile();
     }
 
-    void unzip() {
+    void unzip(File destinationDirectoryForUnzippedFile) {
         if (destinationDirectoryForUnzippedFile.exists()) {
             LOG.info("Directory " + destinationDirectoryForUnzippedFile + " has already exists. Removing it and re-creating.");
             try {
                 FileUtils.deleteDirectory(destinationDirectoryForUnzippedFile);
             } catch (IOException e) {
-                LOG.error("Error: Directory " + destinationDirectoryForUnzippedFile + " wasn't removed while unzipping existing resources!", e);
+                LOG.warn("Directory {} wasn't removed while unzipping existing resources!", destinationDirectoryForUnzippedFile);
                 throw new RuntimeException(e);
             }
         }
         if (!destinationDirectoryForUnzippedFile.mkdir()) {
-            LOG.error("Directory wasn't created: " + destinationDirectoryForUnzippedFile);
+            LOG.warn("Directory wasn't created: {}", destinationDirectoryForUnzippedFile);
         }
 
         try (ZipInputStream zipInputStream = new ZipInputStream(new BufferedInputStream(new FileInputStream(zipFileName)))) {
@@ -70,15 +72,15 @@ public class ServletContextMaker implements Runnable {
                 } else {
                     File directory = new File(destinationFilePath);
                     if (!directory.mkdir()) {
-                        LOG.error("Directory wasn't created: " + directory);
+                        LOG.warn("Directory wasn't created: {}", directory);
                     }
                 }
                 zipInputStream.closeEntry();
                 entry = zipInputStream.getNextEntry();
             }
-            LOG.info("File " + zipFileName + " was unzipped");
+            LOG.info("File {} was unzipped", zipFileName);
         } catch (IOException e) {
-            LOG.error(e.getMessage());
+            LOG.warn("File {} wasn't unzipped", zipFileName);
             throw new RuntimeException(e);
         }
     }
@@ -91,29 +93,16 @@ public class ServletContextMaker implements Runnable {
                 fileOutputStream.write(buffer, 0, read);
             }
         } catch (IOException e) {
-            LOG.error(e.getMessage());
+            LOG.warn("Exception while file {} extraction", destinationFilePath);
             throw new RuntimeException(e);
         }
 
     }
 
-    String findWebXml(File webXmlDirectory) throws IOException {
-        FilenameFilter filter = (dir, name) -> name.equals("web.xml");
-        File[] listFiles = webXmlDirectory.listFiles(filter);
-        if (listFiles != null && listFiles.length == 1) {
-            return listFiles[0].toString();
-        } else if (listFiles == null) {
-            LOG.error("web.xml doesn't exist in " + webXmlDirectory + "!!!");
-            throw new FileNotFoundException("web.xml doesn't exist in " + webXmlDirectory + "!!!");
-        }
-        LOG.error("More than 1 web.xml was found!!!");
-        throw new IOException("More than 1 web.xml was found!!!");
-    }
-
     ServletContext initializeServlets(List<ServletDefinition> servletDefinitions, File webXmlDirectory) {
         try {
             File classesDirectory = Paths.get(webXmlDirectory.getPath(), CLASSES).toFile();
-            File libDirectory = new File(Paths.get(webXmlDirectory.toString(), LIB).toString());
+            File libDirectory = Paths.get(webXmlDirectory.getPath(), LIB).toFile();
             File[] jarFiles = getJarsList(libDirectory);
 
             URL[] urls = new URL[jarFiles.length + 1];
@@ -124,8 +113,7 @@ public class ServletContextMaker implements Runnable {
             URLClassLoader classLoader = new URLClassLoader(urls);
 
             for (ServletDefinition servletDefinition : servletDefinitions) {
-                System.out.println("servletDefinition: " + servletDefinition);
-
+                LOG.debug("Start initialize servlet for ServletDefinition {}", servletDefinition);
                 Class<?> clazz = classLoader.loadClass(servletDefinition.getClassName());
 
                 HttpServlet instance = (HttpServlet) clazz.newInstance();
@@ -134,76 +122,46 @@ public class ServletContextMaker implements Runnable {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | MalformedURLException e) {
-            LOG.error("Error: ", e);
+            LOG.warn("Servlet initialization failed");
             throw new RuntimeException(e);
         }
         return context;
     }
-
-//    void loadLibs(File webXmlDirectory) {
-//        File libDirectory = new File(Paths.get(webXmlDirectory.toString(), LIB).toString());
-//        File[] jars = getJarsList(libDirectory);
-//
-//        JarFile jarFile = new JarFile(jar);
-//        Enumeration<JarEntry> jarEntryEnumeration = jarFile.entries();
-//        URL[] urls = {new URL("jar:file:" + jar + "!/")};
-//        URLClassLoader urlClassLoader = URLClassLoader.newInstance(urls);
-//
-//        for (File jar : jars) {
-//            try {
-//
-//
-//                while (jarEntryEnumeration.hasMoreElements()) {
-//                    JarEntry jarEntry = jarEntryEnumeration.nextElement();
-//                    if (jarEntry.isDirectory() || !jarEntry.getName().endsWith(".class")) {
-//                        continue;
-//                    }
-//                    String className = jarEntry.getName().substring(0, jarEntry.getName().length() - 6);
-//                    className = className.replace('/', '.');
-//                    System.out.println("Loading className: " + className);
-//                    urlClassLoader.loadClass(className);
-//                }
-//
-//            } catch (IOException | ClassNotFoundException e) {
-//                LOG.error("ERROR", e);
-//                throw new RuntimeException(e);
-//            }
-//            LOG.info("Finished for JAR: " + jar);
-//        }
-//        LOG.info("Classes were loaded for libs, libDirectory: " + libDirectory);
-//    }
-
 
     private File[] getJarsList(File libDirectory) {
         FilenameFilter filter = (dir, name) -> name.endsWith(".jar");
         return libDirectory.listFiles(filter);
     }
 
-    public void initializeExistingContext() {
-        //TODO: find all not war dirs, for each dir : dirs
+    boolean findWebXml(File webXmlDirectory) {
+        FilenameFilter filter = (dir, name) -> name.equals("web.xml");
+        File[] webXmlList = webXmlDirectory.listFiles(filter);
 
-        File webXmlDirectory = Paths.get("dir", "WEB-INF").toFile();
-        initializeContext(webXmlDirectory);
+        if (webXmlList != null) {
+            if (webXmlList.length == 0) {
+                LOG.warn("web.xml doesn't exist in {} !", webXmlDirectory);
+                throw new WebXmlFileException("web.xml doesn't exist in " + webXmlDirectory);
+            }
+
+            webXmlPath = webXmlList[0];
+        }
+        return true;
     }
 
     private void initializeContext(File webXmlDirectory) {
-        String webXml;
-        try {
-            webXml = findWebXml(webXmlDirectory);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (findWebXml(webXmlDirectory)) {
+            XMLServletReader xmlServletReader = new XMLServletReader();
+            List<ServletDefinition> servletDefinitions = xmlServletReader.getServlets(webXmlPath);
+            initializeServlets(servletDefinitions, webXmlDirectory);
         }
-
-        XMLServletReader xmlServletReader = new XMLServletReader();
-        List<ServletDefinition> servletDefinitions = xmlServletReader.getServlets(webXml);
-        //loadLibs(webXmlDirectory);
-        initializeServlets(servletDefinitions, webXmlDirectory);
     }
 
     @Override
     public void run() {
-        File webXmlDirectory = generateDirectoryNames(zipFileName);
-        unzip();
+        File directoryNameForUnzippedFile = generateDirectoryNameForUnzippedFile(zipFileName);
+        File webXmlDirectory = generateDirectoryNameForWebXml(directoryNameForUnzippedFile);
+
+        unzip(directoryNameForUnzippedFile);
         initializeContext(webXmlDirectory);
     }
 }

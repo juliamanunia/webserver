@@ -7,9 +7,9 @@ public enum HttpStatus {
     OK(200, "OK"),
     NOT_FOUND(404, "Not found");
 
+    private static final Logger LOG = LoggerFactory.getLogger(HttpStatus.class);
     private int statusCode;
     private String statusText;
-    private static final Logger LOG = LoggerFactory.getLogger(HttpStatus.class);
 
     HttpStatus(int statusCode, String statusText) {
         this.statusCode = statusCode;

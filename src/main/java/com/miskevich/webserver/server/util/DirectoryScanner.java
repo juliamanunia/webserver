@@ -65,13 +65,15 @@ public class DirectoryScanner {
         }
     }
 
-    public void scanExistingWebapps(){
+    public void scanExistingWebapps() {
         File[] files = directory.toFile().listFiles(x -> x.getName().endsWith(EXTENSION));
-        for (File file : files){
-            LOG.info("Found existing war file: " + file.getAbsolutePath());
+        if (files != null) {
+            for (File file : files) {
+                LOG.info("Found existing war file: " + file.getAbsolutePath());
 
-            ServletContextMaker servletContextMaker = new ServletContextMaker(file.getAbsolutePath(), context);
-            executor.execute(servletContextMaker);
+                ServletContextMaker servletContextMaker = new ServletContextMaker(file.getAbsolutePath(), context);
+                executor.execute(servletContextMaker);
+            }
         }
     }
 }
